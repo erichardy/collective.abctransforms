@@ -1,0 +1,49 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.abctransforms">
+
+  <includeDependencies package="." />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package=".browser" />
+
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.abctransforms"
+      directory="profiles/default"
+      description="Installs the collective.abctransforms add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="collective.abctransforms-postInstall"
+      title="collective.abctransforms post_install import step"
+      description="Post install import step from collective.abctransforms"
+      handler=".setuphandlers.post_install">
+  </genericsetup:importStep>
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.abctransforms"
+      directory="profiles/uninstall"
+      description="Uninstalls the collective.abctransforms add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="collective.abctransforms-uninstall"
+      title="collective.abctransforms uninstall import step"
+      description="Import step run during ininstalling collective.abctransforms"
+      handler=".setuphandlers.uninstall">
+  </genericsetup:importStep>
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.abctransforms-hiddenprofiles" />
+
+</configure>
