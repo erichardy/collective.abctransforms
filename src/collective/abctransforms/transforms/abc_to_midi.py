@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Uses the abc2midi
 """
@@ -32,8 +33,9 @@ class abc_to_midi(popentransform):
     useStdin = False
 
     def convert(self, data, cache, **kwargs):
-        context = self.context
-        abc = context.abc
+        # context = self.context
+        # abc = context.abc
+        abc = data
         abctemp = tf.NamedTemporaryFile(mode='w+b',
                                         suffix='.abc',
                                         delete=False).name
@@ -50,11 +52,11 @@ class abc_to_midi(popentransform):
                      stderr=sp.PIPE
                      )
         p.wait()
-        iomidi = StringIO()
-        fmiditemp = open(miditemp, 'r')
+        # iomidi = StringIO()
+        fmiditemp = open(miditemp, 'rb')
         buffmidi = fmiditemp.read()
-        iomidi.write(buffmidi)
-
+        # iomidi.write(buffmidi)
+        """
         title = context.title
         normalizer = getUtility(INormalizer)
         normalizedTitle = normalizer.normalize(title, locale='fr')
@@ -69,11 +71,13 @@ class abc_to_midi(popentransform):
 
         output, errors = p.communicate()
         logger.info(errors)
+        """
         # logger.info(errors)
         # logger.info(output)
-        os.unlink(abctemp)
-        os.unlink(miditemp)
-        return output
+        # os.unlink(abctemp)
+        # os.unlink(miditemp)
+        # logger.info(miditemp)
+        return buffmidi
 
 
 """

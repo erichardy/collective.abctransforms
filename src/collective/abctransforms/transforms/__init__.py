@@ -1,5 +1,5 @@
 
-"""
+
 modules = [
     'abc_to_midi',
 ]
@@ -21,4 +21,4 @@ for m in modules:
 
 def initialize(engine):
     pass
-"""
+
