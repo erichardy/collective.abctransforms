@@ -5,10 +5,8 @@ from zope.interface import implementer
 from Products.CMFCore.utils import getToolByName
 from plone import api
 from StringIO import StringIO
-from Products.MimetypesRegistry.interfaces import IMimetype
 from Products.MimetypesRegistry.MimeTypeItem import MimeTypeItem
-from plone import api
-from plone.outputfilters.setuphandlers import register_transform_policy
+# from plone.outputfilters.setuphandlers import register_transform_policy
 
 
 class text_abc(MimeTypeItem):

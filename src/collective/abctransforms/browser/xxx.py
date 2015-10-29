@@ -3,7 +3,7 @@
 from zope.publisher.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from plone import api
-import pdb
+from pdb import set_trace
 
 abc = """
 X:1
@@ -28,5 +28,3 @@ class xxx(BrowserView):
         portal = api.portal.get()
         pt = getToolByName(portal, "portal_transforms")
         midi = pt.convertTo(target_mimetype='audio/midi', orig=abc)
-
-        pdb.set_trace()

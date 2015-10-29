@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 
-
+"""
 modules = [
     'abc_to_midi',
 ]
@@ -17,7 +18,7 @@ for m in modules:
     except:
         import traceback
         traceback.print_exc()
-
+"""
 
 def initialize(engine):
     pass

@@ -1,6 +1,8 @@
-import re
+# -*- coding: utf-8 -*-
+
+# import re
 import glob
-from sys import modules
+# from sys import modules
 from os.path import join, abspath, dirname, basename
 
 
