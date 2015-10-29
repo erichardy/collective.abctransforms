@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
 from collective.abctransforms.testing import COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING  # noqa
+from Products.CMFCore.utils import getToolByName
 from plone import api
 
 import unittest
@@ -48,3 +49,9 @@ class TestUninstall(unittest.TestCase):
         from collective.abctransforms.interfaces import ICollectiveAbctransformsLayer
         from plone.browserlayer import utils
         self.assertNotIn(ICollectiveAbctransformsLayer, utils.registered_layers())
+
+    def test_abc_removed(self):
+        portal = api.portal.get()
+        mtr = getToolByName(portal, 'mimetypes_registry')
+        mimetypes = mtr.lookup('text/vnd.abc')
+        self.assertEqual(len(mimetypes), 0)

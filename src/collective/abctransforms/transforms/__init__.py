@@ -1,11 +1,7 @@
-# -*- coding: utf-8 -*-
-# from Products.PortalTransforms.libtransforms.utils import MissingBinary
-
-__import__('pkg_resources').declare_namespace(__name__)
 
 """
 modules = [
-    'transforms/abc_to_midi',
+    'abc_to_midi',
 ]
 
 g = globals()
@@ -25,5 +21,4 @@ for m in modules:
 
 def initialize(engine):
     pass
-
 """

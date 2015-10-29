@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <action-provider name="portal_workflow"/>
+ <action-provider name="portal_types"/>
+ <action-provider name="portal_actions" />
+
+<!--
+ <object name="object_buttons" meta_type="CMF Action Category">
+  <object name="create-all-mp3" meta_type="CMF Action" i18n:domain="collective.abcmusic">
+   <property name="title" i18n:translate="">Create all MP3</property>
+   <property name="description" i18n:translate="">Create MP3 for tunes in this folder if not yet present</property>
+   <property
+      name="url_expr">string:@@create-all-mp3</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">python:folder is object</property>
+   <property name="permissions">
+    <element value="Modify portal content"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+</object>
+-->
+
+<object name="object" meta_type="CMF Action Category">
+  <object name="debug" meta_type="CMF Action" i18n:domain="iuem.utils">
+   <property name="title" i18n:translate="">Debug</property>
+   <property name="description" i18n:translate="">call debugger in context</property>
+   <property
+      name="url_expr">string:${object_url}/@@debug</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Manage portal"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+</object>
+
+ <object name="user" meta_type="CMF Action Category">
+  <property name="title"></property>
+
+  <object name="modules" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Modules</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/prefs_install_products_form</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Plone Site Setup: Overview"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+
+  <object name="zmi" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">ZMI</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/manage_main</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Plone Site Setup: Overview"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+  <object name="reload" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">@@reload</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/../@@reload</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Plone Site Setup: Overview"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+  <object name="portal-catalog" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">portal_catalog</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/portal_catalog/manage_main</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Plone Site Setup: Overview"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+</object>
+
+</object>

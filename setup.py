@@ -46,6 +46,8 @@ setup(
         'plone.api',
         'setuptools',
         'z3c.jbot',
+        'Products.MimetypesRegistry',
+        'Products.PortalTransforms',
     ],
     extras_require={
         'test': [

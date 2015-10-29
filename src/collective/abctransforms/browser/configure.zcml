@@ -16,5 +16,10 @@
       name="collective.abctransforms"
       directory="static"
       />
-
+  <browser:page
+    for="*"
+    name="debug"
+    class=".debug.debug"
+    permission="cmf.ManagePortal"
+  />
 </configure>
