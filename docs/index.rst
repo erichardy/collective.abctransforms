@@ -1,8 +1,8 @@
 
-.. _List of Common MIME Types:http://hul.harvard.edu/ois/systems/wax/wax-public-help/mimetypes.htm
-.. _Fileformat.info:http://www.fileformat.info/info/mimetype/text/vnd.abc/index.htm
-.. _MIME type for ABC:http://www.ucolick.org/~sla/abcmusic/abcmime.html
-
+.. _List of Common MIME Types: http://hul.harvard.edu/ois/systems/wax/wax-public-help/mimetypes.htm
+.. _Fileformat.info: http://www.fileformat.info/info/mimetype/text/vnd.abc/index.htm
+.. _MIME type for ABC: http://www.ucolick.org/~sla/abcmusic/abcmime.html
+.. _text/vnd.abc: https://www.iana.org/assignments/media-types/text/vnd.abc
 
 ========================
 collective.abctransforms
@@ -18,6 +18,8 @@ gathered from internet :
 `Fileformat.info`_
 
 `MIME type for ABC`_
+
+`text/vnd.abc`_
 
 Other used mimetypes already exist : application/postscript, image/x-eps, audio/x-wav,
 audio/wav, audio/vnd.wave, audio/mpeg, audio/x-mp3, audio/x-mpeg, audio/mp3

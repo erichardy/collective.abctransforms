@@ -29,10 +29,12 @@ class TestAbcToMidi(unittest.TestCase):
         mi = open(output_file_path('DonaldBlue1.mid'), "rb")
         midi = mi.read()
         mi.close()
-        got = self.pt.convertTo(target_mimetype='audio/midi', orig=abc)
-        print abc
+        # got = self.pt.convertTo(target_mimetype='audio/x-midi', orig=abc)
+        got = self.pt.convertTo('audio/x-midi', abc)
+        # print abc
         # gotmidi = open(output_file_path('gotmidi.mid'), "wb")
         # gotmidi.write(got)
         # gotmidi.close()
-        # self.assertEqual(got, midi)
+        print type(got)
+        self.assertEqual(got.getData(), midi)
         self.assertEqual(self.mtr.classify(abc), 'text/vnd.abc')

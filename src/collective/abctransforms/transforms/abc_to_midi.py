@@ -3,10 +3,10 @@
 Uses the abc2midi
 """
 import logging
-# import os
+import os
 import tempfile as tf
 import subprocess as sp
-# from StringIO import StringIO
+from StringIO import StringIO
 # from plone.namedfile.file import NamedBlobFile as nbf
 # from zope.component import getUtility
 # from plone.i18n.normalizer.interfaces import INormalizer
@@ -32,10 +32,10 @@ class abc_to_midi(popentransform):
     binaryArgs = "%(infile)s -enc UTF-8 -"
     useStdin = False
 
-    def convert(self, data, cache, **kwargs):
+    def convert(self, orig, data, **kwargs):
         # context = self.context
         # abc = context.abc
-        abc = data
+        abc = orig
         abctemp = tf.NamedTemporaryFile(mode='w+b',
                                         suffix='.abc',
                                         delete=False).name
@@ -56,6 +56,7 @@ class abc_to_midi(popentransform):
         fmiditemp = open(miditemp, 'rb')
         buffmidi = fmiditemp.read()
         # iomidi.write(buffmidi)
+        # iomidi.close()
         """
         title = context.title
         normalizer = getUtility(INormalizer)
@@ -74,10 +75,12 @@ class abc_to_midi(popentransform):
         """
         # logger.info(errors)
         # logger.info(output)
-        # os.unlink(abctemp)
-        # os.unlink(miditemp)
+        os.unlink(abctemp)
+        os.unlink(miditemp)
         # logger.info(miditemp)
-        return buffmidi
+        data.setData(buffmidi)
+        return data
+        # return iomidi
 
 
 """
