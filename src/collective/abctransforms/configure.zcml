@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.abctransforms">
 
@@ -9,6 +10,7 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <include package="collective.monkeypatcher" />
   <include package=".browser" />
   <include package=".transforms" />
 
@@ -43,6 +45,12 @@
       handler=".setuphandlers.uninstall">
   </genericsetup:importStep>
 
+  <monkey:patch
+        description="This works around issue http://some.tracker.tld/ticket/123"
+        class="Products.MimetypesRegistry.MimeTypesRegistry.MimeTypesRegistry"
+        original="classify"
+        replacement=".patchs.patchedclassify"
+        />
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="collective.abctransforms-hiddenprofiles" />

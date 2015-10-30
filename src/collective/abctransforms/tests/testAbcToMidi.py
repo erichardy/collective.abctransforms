@@ -26,15 +26,10 @@ class TestAbcToMidi(unittest.TestCase):
     def test_abc_to_midi(self):
         fd = open(input_file_path('DonaldBlue.abc'), "r")
         abc = fd.read()
+        print self.mtr.classify(abc)
         mi = open(output_file_path('DonaldBlue1.mid'), "rb")
         midi = mi.read()
         mi.close()
-        # got = self.pt.convertTo(target_mimetype='audio/x-midi', orig=abc)
         got = self.pt.convertTo('audio/x-midi', abc)
-        # print abc
-        # gotmidi = open(output_file_path('gotmidi.mid'), "wb")
-        # gotmidi.write(got)
-        # gotmidi.close()
-        print type(got)
         self.assertEqual(got.getData(), midi)
         self.assertEqual(self.mtr.classify(abc), 'text/vnd.abc')

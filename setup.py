@@ -46,6 +46,7 @@ setup(
         'plone.api',
         'setuptools',
         'z3c.jbot',
+        'collective.monkeypatcher',
         'Products.MimetypesRegistry',
         'Products.PortalTransforms',
     ],
