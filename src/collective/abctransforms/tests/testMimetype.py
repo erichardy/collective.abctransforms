@@ -27,3 +27,9 @@ class TestMimetype(unittest.TestCase):
         fd = open(input_file_path('DonaldBlue.abc'), "r")
         abc = fd.read()
         self.assertEqual(self.mtr.classify(abc), 'text/vnd.abc')
+
+    def test_aiff_present(self):
+        portal = api.portal.get()
+        mtr = getToolByName(portal, 'mimetypes_registry')
+        mimetypes = mtr.lookup('audio/x-aiff')
+        self.assertEqual(len(mimetypes), 1)

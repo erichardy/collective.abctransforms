@@ -11,6 +11,11 @@ from Products.MimetypesRegistry.MimeTypeItem import MimeTypeItem
 
 logger = logging.getLogger('collective.abctransforms:GS')
 
+module = 'collective.abctransforms.transforms.'
+abctransforms = []
+abctransforms.append('abc_to_midi')
+abctransforms.append('midi_to_aiff')
+
 
 class text_abc(MimeTypeItem):
     __name__ = "text_abc"
@@ -48,23 +53,28 @@ def post_install(context):
     out = StringIO()
     portal = api.portal.get()
     # register_transform_policy(portal, 'text/vnd.abc', 'abc_to_midi')
-    install_transform(portal, out)
+    install_transforms(portal, out)
+
+
+def install_transforms(portal, out):
+    for abctransform in abctransforms:
+        install_transform(portal, out, abctransform)
 
 
 # code from Products/CMFBibliographyAT/setuphandlers.py
-def install_transform(portal, out):
+def install_transform(portal, out, abctransform):
+    print 'install ' + abctransform
     try:
         print >>out, "Add transforms"
         pt = getToolByName(portal, 'portal_transforms')
         try:
-            pt.manage_delObjects(['abc_to_midi'])
+            pt.manage_delObjects([abctransform])
         except:
-            logger.info('abc_to_midi not yet installed')
+            logger.info(abctransform + ' not yet installed')
             # XXX: get rid of bare except
 
-        trans = 'collective.abctransforms.transforms.abc_to_midi'
-        pt.manage_addTransform('abc_to_midi',
-                               trans)
+        pt.manage_addTransform(abctransform,
+                               module + abctransform)
         # see Products/CMFBibliographyAT/setuphandlers.py
         # addPolicy(transform_tool, out)
     except (NameError, AttributeError):
