@@ -8,7 +8,7 @@ from collective.abctransforms.testing import COLLECTIVE_ABCTRANSFORMS_INTEGRATIO
 import unittest
 
 
-class TestMimetype(unittest.TestCase):
+class TestMimetypes(unittest.TestCase):
 
     layer = COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING
 
@@ -32,4 +32,10 @@ class TestMimetype(unittest.TestCase):
         portal = api.portal.get()
         mtr = getToolByName(portal, 'mimetypes_registry')
         mimetypes = mtr.lookup('audio/x-aiff')
+        self.assertEqual(len(mimetypes), 1)
+
+    def test_mpeg_present(self):
+        portal = api.portal.get()
+        mtr = getToolByName(portal, 'mimetypes_registry')
+        mimetypes = mtr.lookup('audio/mpeg')
         self.assertEqual(len(mimetypes), 1)

@@ -15,6 +15,7 @@ module = 'collective.abctransforms.transforms.'
 abctransforms = []
 abctransforms.append('abc_to_midi')
 abctransforms.append('midi_to_aiff')
+abctransforms.append('aiff_to_mp3')
 
 
 class text_abc(MimeTypeItem):
