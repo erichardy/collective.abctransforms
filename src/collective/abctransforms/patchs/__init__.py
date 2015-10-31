@@ -1,5 +1,9 @@
-from AccessControl import ClassSecurityInfo
+# -*- coding: utf-8 -*-
+
+# from AccessControl import ClassSecurityInfo
 from Acquisition import aq_base
+from zope.contenttype import guess_content_type
+"""
 from App.class_init import InitializeClass
 from BTrees.OOBTree import OOBTree
 from OFS.Folder import Folder
@@ -23,11 +27,12 @@ from Products.MimetypesRegistry.mime_types import initialize
 from Products.MimetypesRegistry.mime_types import magic
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from types import UnicodeType
-from zope.contenttype import guess_content_type
+
 from zope.interface import implements
 import fnmatch
 import os
 import re
+"""
 
 
 def patchedclassify(self, data, mimetype=None, filename=None):

@@ -6,7 +6,7 @@ from Products.CMFCore.utils import getToolByName
 # from StringIO import StringIO
 
 from collective.abctransforms.testing import COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING  # noqa
-from collective.abctransforms.transforms.abc_to_midi import abc_to_midi
+# from collective.abctransforms.transforms.abc_to_midi import abc_to_midi
 from utils import input_file_path, output_file_path
 import unittest
 
@@ -26,10 +26,14 @@ class TestAbcToMidi(unittest.TestCase):
     def test_abc_to_midi(self):
         fd = open(input_file_path('DonaldBlue.abc'), "r")
         abc = fd.read()
-        print self.mtr.classify(abc)
+        # print self.mtr.classify(abc)
         mi = open(output_file_path('DonaldBlue1.mid'), "rb")
         midi = mi.read()
         mi.close()
-        got = self.pt.convertTo('audio/x-midi', abc)
+        got = self.pt.convertTo('audio/x-midi',
+                                abc,
+                                filemane="DonaldBlue")
+        got_meta = got.getMetadata()
+        print 'metadata returned : ' + str(got_meta)
         self.assertEqual(got.getData(), midi)
-        self.assertEqual(self.mtr.classify(abc), 'text/vnd.abc')
+        self.assertEqual(got_meta['mimetype'], 'audio/midi')

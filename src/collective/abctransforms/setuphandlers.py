@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
 
@@ -7,6 +8,8 @@ from plone import api
 from StringIO import StringIO
 from Products.MimetypesRegistry.MimeTypeItem import MimeTypeItem
 # from plone.outputfilters.setuphandlers import register_transform_policy
+
+logger = logging.getLogger('collective.abctransforms:GS')
 
 
 class text_abc(MimeTypeItem):
@@ -52,14 +55,16 @@ def post_install(context):
 def install_transform(portal, out):
     try:
         print >>out, "Add transforms"
-        transform_tool = getToolByName(portal, 'portal_transforms')
+        pt = getToolByName(portal, 'portal_transforms')
         try:
-            transform_tool.manage_delObjects(['abc_to_midi'])
+            pt.manage_delObjects(['abc_to_midi'])
         except:
+            logger.info('abc_to_midi not yet installed')
             # XXX: get rid of bare except
-            pass
-        transform_tool.manage_addTransform('abc_to_midi',
-                                           'collective.abctransforms.transforms.abc_to_midi')
+
+        trans = 'collective.abctransforms.transforms.abc_to_midi'
+        pt.manage_addTransform('abc_to_midi',
+                               trans)
         # see Products/CMFBibliographyAT/setuphandlers.py
         # addPolicy(transform_tool, out)
     except (NameError, AttributeError):
