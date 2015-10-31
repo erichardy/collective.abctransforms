@@ -26,7 +26,7 @@ class abc_to_midi(popentransform):
     output = 'audio/midi'
     # output_encoding = 'utf-8'
 
-    __version__ = '2015-10-29.01'
+    __version__ = '2015-10-31.01'
 
     binaryName = "abc2midi"
     binaryArgs = ""
@@ -34,7 +34,7 @@ class abc_to_midi(popentransform):
 
     def convert(self, orig, data, **kwargs):
         """"
-        Even if a fielname arg is passed, it is not copied in
+        Even if a filename arg is passed, it is not copied in
         data metadata !
         Don't use this method directly !
 
@@ -44,7 +44,7 @@ class abc_to_midi(popentransform):
                                 abc,
                                 filemane="DonaldBlue")
 
-        and midi.getMetadata()
+        and midi.getMetadata(), midi.getData()
 
         see the test abc_to_midi
         """
