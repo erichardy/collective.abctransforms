@@ -2,11 +2,8 @@
 
 import logging
 from Products.CMFCore.utils import getToolByName
-# from plone import api
-# from StringIO import StringIO
 
 from collective.abctransforms.testing import COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING  # noqa
-# from collective.abctransforms.transforms.abc_to_midi import abc_to_midi
 from utils import input_file_path, output_file_path
 import unittest
 
@@ -34,10 +31,10 @@ class TestAbcToMP3(unittest.TestCase):
                                 abc)
         got_meta = got.getMetadata()
         print 'metadata returned : ' + str(got_meta)
-        # self.assertEqual(got.getData(), mp3)
+        self.assertEqual(mp3, got.getData())
         self.assertEqual(got_meta['mimetype'], 'audio/mpeg')
-        """ """
+        """
         fgot = open(output_file_path('got.mp3'), "wb")
         fgot.write(got.getData())
         fgot.close()
-        """ """
+        """

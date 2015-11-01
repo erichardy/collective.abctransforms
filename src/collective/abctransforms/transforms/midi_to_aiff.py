@@ -6,10 +6,6 @@ import logging
 import os
 import tempfile as tf
 import subprocess as sp
-# from StringIO import StringIO
-# from plone.namedfile.file import NamedBlobFile as nbf
-# from zope.component import getUtility
-# from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (

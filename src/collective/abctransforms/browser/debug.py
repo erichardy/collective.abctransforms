@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from zope.publisher.browser import BrowserView
+from pdb import set_trace
 
 
 class debug(BrowserView):
@@ -13,5 +14,4 @@ class debug(BrowserView):
     Action configurée dans le fichier profiles/default/actions.xml
     """
     def __call__(self):
-        import pdb
-        pdb.set_trace()
+        set_trace()

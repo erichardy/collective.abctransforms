@@ -46,9 +46,11 @@ class TestUninstall(unittest.TestCase):
 
     def test_browserlayer_removed(self):
         """Test that ICollectiveAbctransformsLayer is removed."""
-        from collective.abctransforms.interfaces import ICollectiveAbctransformsLayer
+        from collective.abctransforms.interfaces import \
+            ICollectiveAbctransformsLayer
         from plone.browserlayer import utils
-        self.assertNotIn(ICollectiveAbctransformsLayer, utils.registered_layers())
+        self.assertNotIn(ICollectiveAbctransformsLayer,
+                         utils.registered_layers())
 
     def test_abc_removed(self):
         portal = api.portal.get()

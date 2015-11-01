@@ -1,38 +1,6 @@
 # -*- coding: utf-8 -*-
-
-# from AccessControl import ClassSecurityInfo
 from Acquisition import aq_base
 from zope.contenttype import guess_content_type
-"""
-from App.class_init import InitializeClass
-from BTrees.OOBTree import OOBTree
-from OFS.Folder import Folder
-from Persistence import PersistentMapping
-from Products.CMFCore.ActionProviderBase import ActionProviderBase
-from Products.CMFCore.permissions import ManagePortal
-from Products.CMFCore.utils import UniqueObject
-from Products.CMFCore.utils import getToolByName
-from Products.CMFCore.utils import registerToolInterface
-from Products.MimetypesRegistry.MimeTypeItem import MimeTypeItem
-from Products.MimetypesRegistry.common import MimeTypeException
-from Products.MimetypesRegistry.common import _www
-from Products.MimetypesRegistry.common import log
-from Products.MimetypesRegistry.encoding import guess_encoding
-from Products.MimetypesRegistry.interfaces import IClassifier
-from Products.MimetypesRegistry.interfaces import IMimetype
-from Products.MimetypesRegistry.interfaces import IMimetypesRegistry
-from Products.MimetypesRegistry.interfaces import IMimetypesRegistryTool
-from Products.MimetypesRegistry.interfaces import ISourceAdapter
-from Products.MimetypesRegistry.mime_types import initialize
-from Products.MimetypesRegistry.mime_types import magic
-from Products.PageTemplates.PageTemplateFile import PageTemplateFile
-from types import UnicodeType
-
-from zope.interface import implements
-import fnmatch
-import os
-import re
-"""
 
 
 def patchedclassify(self, data, mimetype=None, filename=None):
@@ -89,4 +57,3 @@ def patchedclassify(self, data, mimetype=None, filename=None):
 
     # Remove acquisition wrappers
     return aq_base(mt)
-

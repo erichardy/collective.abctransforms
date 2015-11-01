@@ -383,16 +383,13 @@ class magicTest:
             else:
                 # print 'UNKNOWN TYPE: ' + self.type
                 pass
-        except:
+        except Exception:
             return None
 
-#    print str([self.msg, self.value, data])
         return self.test(data)
 
 
 def guessMime(data):
-    # abcMagic = list(magicTest(0, 'string', '=', '%abc', 'text/vnd.abc'))
-    # magicNumbers = abcMagic + magicNumbers
     for test in magicNumbers:
         m = test.compare(data)
         if m:

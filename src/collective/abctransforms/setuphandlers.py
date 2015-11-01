@@ -7,11 +7,6 @@ from Products.CMFCore.utils import getToolByName
 from plone import api
 from StringIO import StringIO
 from Products.MimetypesRegistry.MimeTypeItem import MimeTypeItem
-# from plone.outputfilters.setuphandlers import register_transform_policy
-from Products.PortalTransforms.chain import chain
-from collective.abctransforms.transforms.abc_to_midi import abc_to_midi
-from collective.abctransforms.transforms.midi_to_aiff import midi_to_aiff
-from collective.abctransforms.transforms.aiff_to_mp3 import aiff_to_mp3
 
 logger = logging.getLogger('collective.abctransforms:GS')
 
@@ -60,20 +55,6 @@ def post_install(context):
     portal = api.portal.get()
     # register_transform_policy(portal, 'text/vnd.abc', 'abc_to_midi')
     install_transforms(portal, out)
-    # install_chain(portal, "abc_to_mp3")
-
-
-def install_chain(portal, chainId):
-    portal = api.portal.get()
-    pt = getToolByName(portal, 'portal_transforms')
-    abc_to_mp3 = chain('abc_to_mp3')
-    abc_to_mp3.registerTransform(abc_to_midi())
-    abc_to_mp3.registerTransform(midi_to_aiff())
-    abc_to_mp3.registerTransform(aiff_to_mp3())
-    try:
-        pt.registerTransform(abc_to_mp3())
-    except:
-        pass
 
 
 def install_transforms(portal, out):
@@ -89,7 +70,7 @@ def install_transform(portal, out, abctransform):
         pt = getToolByName(portal, 'portal_transforms')
         try:
             pt.manage_delObjects([abctransform])
-        except:
+        except Exception:
             logger.info(abctransform + ' not yet installed')
             # XXX: get rid of bare except
 
@@ -114,7 +95,6 @@ def uninstall(context):
         ta = text_abc()
         mtr.unregister(ta)
     pt = getToolByName(portal, 'portal_transforms')
-    
+
     for abctransform in abctransforms:
         pt.unregisterTransform(abctransform)
-    # pt.unregisterTransform("abc_to_mp3")
