@@ -20,14 +20,10 @@ class midi_to_aiff(popentransform):
     __name__ = "midi_to_aiff"
     inputs = ('audio/midi',)
     output = 'audio/x-aiff'
-    # output_encoding = 'utf-8'
 
     __version__ = '2015-10-31.01'
 
     binaryName = "timidity"
-    # binaryArgs = "--quiet=9 -A 400 -EFchorus=2,50 -EFreverb=2 -Oa -o- \
-    # %(infile)s"
-    # binaryArgs = "--quiet=9 -A 400 -EFchorus=2,50 -EFreverb=2 -Oa -o- -"
     useStdin = False
 
     def convert(self, orig, data, **kwargs):
