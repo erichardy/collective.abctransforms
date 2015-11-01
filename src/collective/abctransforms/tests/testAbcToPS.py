@@ -3,7 +3,7 @@
 import logging
 from Products.CMFCore.utils import getToolByName
 from collective.abctransforms.testing import COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING  # noqa
-from utils import input_file_path, output_file_path
+from utils import input_file_path
 import unittest
 
 logger = logging.getLogger('collective.abctransforms:tests')
