@@ -16,6 +16,9 @@ abctransforms.append('abc_to_midi')
 abctransforms.append('midi_to_aiff')
 abctransforms.append('aiff_to_mp3')
 abctransforms.append('abc_to_mp3')
+abctransforms.append('abc_to_ps')
+abctransforms.append('ps_to_pdf')
+abctransforms.append('abc_to_pdf')
 
 
 class text_abc(MimeTypeItem):

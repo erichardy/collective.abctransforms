@@ -9,7 +9,7 @@ import unittest
 logger = logging.getLogger('collective.abctransforms:tests')
 
 
-class TestAbcToMidi(unittest.TestCase):
+class TestPStoPDF(unittest.TestCase):
 
     layer = COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING
 
@@ -19,17 +19,19 @@ class TestAbcToMidi(unittest.TestCase):
         self.pt = getToolByName(self.portal, "portal_transforms")
         self.mtr = getToolByName(self.portal, "mimetypes_registry")
 
-    def test_abc_to_midi(self):
-        fd = open(input_file_path('DonaldBlue.abc'), "r")
-        abc = fd.read()
-        fd.close()
-        mi = open(output_file_path('DonaldBlue1.mid'), "rb")
-        midi = mi.read()
-        mi.close()
-        got = self.pt.convertTo('audio/x-midi',
-                                abc,
-                                filemane="DonaldBlue")
+    def test_ps_to_pdf(self):
+        """
+        .. note: Because creation date, command line, filenames, etc...
+            are part of postscript file, it isn't possible to compare
+            files !!! ;-(
+        """
+        fdps = open(output_file_path('DonaldBlue.ps'), "rb")
+        ps = fdps.read()
+        fdps.close()
+
+        got = self.pt.convertTo('application/pdf',
+                                ps)
         got_meta = got.getMetadata()
         print 'metadata returned : ' + str(got_meta)
-        self.assertEqual(got.getData(), midi)
-        self.assertEqual(got_meta['mimetype'], 'audio/midi')
+        # self.assertEqual(ps, got.getData())
+        self.assertEqual(got_meta['mimetype'], 'application/pdf')

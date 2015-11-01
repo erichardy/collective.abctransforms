@@ -29,15 +29,12 @@ class abc_to_midi(popentransform):
 
     def convert(self, orig, data, **kwargs):
         """"
-        Even if a filename arg is passed, it is not copied in
-        data metadata !
         Don't use this method directly !
 
         Instead, use :
 
         midi = portalTransformTool.convertTo('audio/x-midi',
-                                abc,
-                                filemane="DonaldBlue")
+                                             abc)
 
         and midi.getMetadata(), midi.getData()
 

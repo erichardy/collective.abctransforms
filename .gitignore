@@ -26,5 +26,5 @@ var
 *~
 *.swp
 # src
-*.aiff
-*.mp3
+src/collective/abctransforms/tests/outputs/DonaldBlue*
+src/collective/abctransforms/tests/outputs/got*
