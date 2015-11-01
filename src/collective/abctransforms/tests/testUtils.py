@@ -10,7 +10,6 @@ import unittest
 
 class TestAbcToMidi(unittest.TestCase):
 
-
     def setUp(self):
         """Custom shared utility setup for tests."""
         """
