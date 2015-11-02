@@ -32,7 +32,6 @@ def from_to(src,
     :type logging: boolean
     :returns: data converted by `command` from `src`
     """
-    print outputsuffix
     if not inputsuffix:
         inputsuffix = ''
     if not outputsuffix:
@@ -48,8 +47,6 @@ def from_to(src,
     destfile = tf.NamedTemporaryFile(mode='w+b',
                                      suffix=outputsuffix,
                                      delete=False).name
-    print destfile
-    
     command[command.index("datain")] = srcfile
     command[command.index("dataout")] = destfile
     p = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE)

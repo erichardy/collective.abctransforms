@@ -19,8 +19,7 @@ abctransforms.append('abc_to_mp3')
 abctransforms.append('abc_to_ps')
 abctransforms.append('ps_to_pdf')
 abctransforms.append('abc_to_pdf')
-abctransforms.append('ps_to_epsi')
-abctransforms.append('epsi_to_png')
+abctransforms.append('abc_to_png')
 
 
 class text_abc(MimeTypeItem):
@@ -69,7 +68,7 @@ def install_transforms(portal, out):
 
 # code from Products/CMFBibliographyAT/setuphandlers.py
 def install_transform(portal, out, abctransform):
-    print 'install ' + abctransform
+    # print 'install ' + abctransform
     try:
         print >>out, "Add transforms"
         pt = getToolByName(portal, 'portal_transforms')

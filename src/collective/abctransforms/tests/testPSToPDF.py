@@ -4,7 +4,7 @@ import logging
 from Products.CMFCore.utils import getToolByName
 from collective.abctransforms.testing \
     import COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING
-from utils import output_file_path
+from utils import input_file_path, output_file_path
 import unittest
 
 logger = logging.getLogger('collective.abctransforms:tests')
@@ -37,30 +37,14 @@ class TestPStoPDF(unittest.TestCase):
         # self.assertEqual(ps, got.getData())
         self.assertEqual(got_meta['mimetype'], 'application/pdf')
 
-    def test_ps_to_epsi(self):
-        fdps = open(output_file_path('DonaldBlue.ps'), "rb")
-        ps = fdps.read()
-        fdps.close()
-
-        got = self.pt.convertTo('image/x-eps',
-                                ps)
-        got_meta = got.getMetadata()
-        print 'metadata returned : ' + str(got_meta)
-        # self.assertEqual(ps, got.getData())
-        """
-        self.assertEqual(got_meta['mimetype'], 'image/x-eps')
-        fdgot = open(output_file_path('got.epsi'), "wb")
-        fdgot.write(got.getData())
-        fdgot.close()
-        """
-
-    def test_epsi_to_png(self):
-        fdepsi = open(output_file_path('DonaldBlue.epsi'), "rb")
-        epsi = fdepsi.read()
-        fdepsi.close()
+    def test_abc_to_png(self):
+        fabc = open(input_file_path('DonaldBlue.abc'), "rb")
+        abc = fabc.read()
+        fabc.close()
 
         got = self.pt.convertTo('image/png',
-                                epsi)
+                                abc,
+                                mimetype='text/vnd.abc')
         got_meta = got.getMetadata()
         print 'metadata returned : ' + str(got_meta)
         # self.assertEqual(ps, got.getData())
