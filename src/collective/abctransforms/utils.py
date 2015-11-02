@@ -8,7 +8,12 @@ import subprocess as sp
 logger = logging.getLogger('collective.abctransforms')
 
 
-def from_to(src, command, toappend=None, logging=False):
+def from_to(src,
+            command,
+            toappend=None,
+            logging=False,
+            inputsuffix=None,
+            outputsuffix=None):
     """
     This function convert input data given in the src param according
     to the command.
@@ -27,7 +32,13 @@ def from_to(src, command, toappend=None, logging=False):
     :type logging: boolean
     :returns: data converted by `command` from `src`
     """
+    print outputsuffix
+    if not inputsuffix:
+        inputsuffix = ''
+    if not outputsuffix:
+        outputsuffix = ''
     srcfile = tf.NamedTemporaryFile(mode='w+b',
+                                    suffix=inputsuffix,
                                     delete=False).name
     fdsrc = open(srcfile, "wb")
     fdsrc.write(src)
@@ -35,7 +46,10 @@ def from_to(src, command, toappend=None, logging=False):
         fdsrc.write(toappend)
     fdsrc.close()
     destfile = tf.NamedTemporaryFile(mode='w+b',
+                                     suffix=outputsuffix,
                                      delete=False).name
+    print destfile
+    
     command[command.index("datain")] = srcfile
     command[command.index("dataout")] = destfile
     p = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE)

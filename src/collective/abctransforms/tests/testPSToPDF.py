@@ -2,7 +2,8 @@
 
 import logging
 from Products.CMFCore.utils import getToolByName
-from collective.abctransforms.testing import COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING  # noqa
+from collective.abctransforms.testing \
+    import COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING
 from utils import output_file_path
 import unittest
 
@@ -35,3 +36,37 @@ class TestPStoPDF(unittest.TestCase):
         print 'metadata returned : ' + str(got_meta)
         # self.assertEqual(ps, got.getData())
         self.assertEqual(got_meta['mimetype'], 'application/pdf')
+
+    def test_ps_to_epsi(self):
+        fdps = open(output_file_path('DonaldBlue.ps'), "rb")
+        ps = fdps.read()
+        fdps.close()
+
+        got = self.pt.convertTo('image/x-eps',
+                                ps)
+        got_meta = got.getMetadata()
+        print 'metadata returned : ' + str(got_meta)
+        # self.assertEqual(ps, got.getData())
+        """
+        self.assertEqual(got_meta['mimetype'], 'image/x-eps')
+        fdgot = open(output_file_path('got.epsi'), "wb")
+        fdgot.write(got.getData())
+        fdgot.close()
+        """
+
+    def test_epsi_to_png(self):
+        fdepsi = open(output_file_path('DonaldBlue.epsi'), "rb")
+        epsi = fdepsi.read()
+        fdepsi.close()
+
+        got = self.pt.convertTo('image/png',
+                                epsi)
+        got_meta = got.getMetadata()
+        print 'metadata returned : ' + str(got_meta)
+        # self.assertEqual(ps, got.getData())
+        """ """
+        self.assertEqual(got_meta['mimetype'], 'image/png')
+        fdgot = open(output_file_path('got.png'), "wb")
+        fdgot.write(got.getData())
+        fdgot.close()
+        """ """
