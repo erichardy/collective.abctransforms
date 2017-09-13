@@ -7,6 +7,8 @@ from Products.CMFCore.utils import getToolByName
 from plone import api
 from StringIO import StringIO
 from Products.MimetypesRegistry.MimeTypeItem import MimeTypeItem
+from Products.MimetypesRegistry.mime_types.magic import magicNumbers
+from Products.MimetypesRegistry.mime_types.magic import magicTest
 
 logger = logging.getLogger('collective.abctransforms:GS')
 
@@ -55,6 +57,12 @@ def post_install(context):
         # install 'text/vnd.abc'
         ta = text_abc()
         mtr.register(ta)
+    # now, install magic
+    values = [ v.value for v in magicNumbers]
+    if '%abc' not in values:
+        m = [0, 'string', '=', '%abc', 'text/vnd.abc']
+        magicNumbers.append(magicTest(m[0], m[1], m[2], m[3], m[4]))
+
     out = StringIO()
     portal = api.portal.get()
     # register_transform_policy(portal, 'text/vnd.abc', 'abc_to_midi')
