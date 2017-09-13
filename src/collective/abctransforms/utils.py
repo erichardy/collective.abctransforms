@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from plone import api
 import os
 import tempfile as tf
 import subprocess as sp
@@ -36,6 +35,7 @@ def add_abc_MIMEType():
     'string'
     '''
     pass
+
 
 def from_to(src,
             command,

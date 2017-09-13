@@ -58,7 +58,7 @@ def post_install(context):
         ta = text_abc()
         mtr.register(ta)
     # now, install magic
-    values = [ v.value for v in magicNumbers]
+    values = [v.value for v in magicNumbers]
     if '%abc' not in values:
         m = [0, 'string', '=', '%abc', 'text/vnd.abc']
         magicNumbers.append(magicTest(m[0], m[1], m[2], m[3], m[4]))
