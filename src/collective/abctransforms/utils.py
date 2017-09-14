@@ -42,7 +42,9 @@ def from_to(src,
             toappend=None,
             logging=False,
             inputsuffix=None,
-            outputsuffix=None):
+            outputsuffix=None,
+            delsrc=True,
+            deldst=True):
     """
     This function convert input data given in the src param according
     to the command.
@@ -65,6 +67,9 @@ def from_to(src,
         inputsuffix = ''
     if not outputsuffix:
         outputsuffix = ''
+    if outputsuffix == 'svg':
+        to = 'svg'
+        outputsuffix = ''
     srcfile = tf.NamedTemporaryFile(mode='w+b',
                                     suffix=inputsuffix,
                                     delete=False).name
@@ -76,11 +81,13 @@ def from_to(src,
     destfile = tf.NamedTemporaryFile(mode='w+b',
                                      suffix=outputsuffix,
                                      delete=False).name
+    if to == 'svg':
+        destfile = destfile + '001.svg'
     command[command.index("datain")] = srcfile
     command[command.index("dataout")] = destfile
     p = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE)
     p.wait()
-
+    logger.info(command)
     fddest = open(destfile, "rb")
     destdata = fddest.read()
     fddest.close()
@@ -88,6 +95,8 @@ def from_to(src,
     if logging:
         logger.info(errors)
         logger.info(output)
-    os.unlink(srcfile)
-    os.unlink(destfile)
+    if delsrc:
+        os.unlink(srcfile)
+    if deldst:
+        os.unlink(destfile)
     return destdata
