@@ -67,6 +67,7 @@ def from_to(src,
         inputsuffix = ''
     if not outputsuffix:
         outputsuffix = ''
+    to = ''
     if outputsuffix == 'svg':
         to = 'svg'
         outputsuffix = ''
@@ -81,13 +82,17 @@ def from_to(src,
     destfile = tf.NamedTemporaryFile(mode='w+b',
                                      suffix=outputsuffix,
                                      delete=False).name
-    if to == 'svg':
-        destfile = destfile + '001.svg'
     command[command.index("datain")] = srcfile
     command[command.index("dataout")] = destfile
+    if logging:
+        logger.info('srcfile : ' + srcfile)
+        logger.info('destfile : ' + destfile)
+        logger.info('command : ' + str(command))
     p = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE)
     p.wait()
-    logger.info(command)
+
+    if to == 'svg':
+        destfile = destfile + '001.svg'
     fddest = open(destfile, "rb")
     destdata = fddest.read()
     fddest.close()

@@ -28,9 +28,9 @@ class abc_to_svg(popentransform):
         ps = from_to(orig,
                      command,
                      outputsuffix='svg',
-                     delsrc=False,
-                     deldst=False,
-                     logging=True)
+                     delsrc=True,
+                     deldst=True,
+                     logging=False)
         data.setData(ps)
         return data
 
