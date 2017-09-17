@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.abctransforms">
 
@@ -43,6 +44,15 @@
       description="Import step run during ininstalling collective.abctransforms"
       handler=".setuphandlers.uninstall">
   </genericsetup:importStep>
+
+<!-- Views -->
+  <browser:page
+       name="abctransforms-settings"
+       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+       class=".controlpanel.IABCTransformsSettings"
+       permission="cmf.ManagePortal"
+    />
+
 
   <utility
       factory=".setuphandlers.HiddenProfiles"

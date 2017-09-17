@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Uses the abc2midi
+Uses the convert from ImageMagick package
 """
 import logging
 from Products.CMFCore.utils import getToolByName
