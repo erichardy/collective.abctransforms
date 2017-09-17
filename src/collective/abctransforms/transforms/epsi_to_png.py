@@ -14,24 +14,28 @@ from collective.abctransforms.interfaces import IABCTransformsSettings
 logger = logging.getLogger('collective.abctransforms')
 
 
-class ps_to_pdf(popentransform):
+class epsi_to_png(popentransform):
     implements(ITransform)
 
-    __name__ = "ps_to_pdf"
-    inputs = ('application/postscript',)
-    output = 'application/pdf'
+    __name__ = "ps_to_epsi"
+    inputs = ('image/x-eps',)
+    output = 'image/png'
 
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
         s_cmd = api.portal.get_registry_record(
-            'ps_to_pdf',
+            'epsi_to_png',
             interface=IABCTransformsSettings)
         cmd = eval(s_cmd)
-        pdf = from_to(orig, cmd)
-        data.setData(pdf)
+        png = from_to(
+            orig,
+            cmd,
+            inputsuffix=".epsi",
+            outputsuffix=".png")
+        data.setData(png)
         return data
 
 
 def register():
-    return ps_to_pdf()
+    return epsi_to_png()

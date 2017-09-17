@@ -7,7 +7,9 @@ from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
+from plone import api
 from collective.abctransforms.utils import from_to
+from collective.abctransforms.interfaces import IABCTransformsSettings
 
 logger = logging.getLogger('collective.abctransforms')
 
@@ -22,15 +24,15 @@ class abc_to_svg(popentransform):
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
-
-        # EPS command = ["abcm2ps", "datain", '-E', '-O', "dataout"]
-        command = ["abcm2ps", "datain", '-g', '-O', "dataout"]
-        ps = from_to(orig,
-                     command,
-                     outputsuffix='svg',
-                     delsrc=True,
-                     deldst=True,
-                     logging=False)
+        s_cmd = api.portal.get_registry_record(
+            'abc_to_svg',
+            interface=IABCTransformsSettings)
+        cmd = eval(s_cmd)
+        ps = from_to(
+            orig,
+            cmd,
+            outputsuffix='svg',
+            )
         data.setData(ps)
         return data
 

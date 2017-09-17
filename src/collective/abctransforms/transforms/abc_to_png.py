@@ -9,7 +9,10 @@ from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
+from plone import api
 from collective.abctransforms.utils import from_to
+from collective.abctransforms.interfaces import IABCTransformsSettings
+
 
 logger = logging.getLogger('collective.abctransforms')
 
@@ -28,23 +31,8 @@ class abc_to_png(popentransform):
         portal = api.portal.get()
         pt = getToolByName(portal, 'portal_transforms')
         ps = pt.convertTo('application/postscript', abc)
-        ps2epsi = ["ps2epsi", "datain", "dataout"]
-        epsi = from_to(ps.getData(), ps2epsi, logging=False)
-        # png = pt.convertTo('image/png', epsi)
-        convert = ["convert",
-                   "-filter",
-                   "Catrom",
-                   "-resize",
-                   "600",
-                   "datain",
-                   "dataout"]
-        png = from_to(epsi,
-                      convert,
-                      toappend=None,
-                      logging=False,
-                      inputsuffix=".epsi",
-                      outputsuffix=".png")
-
+        epsi = pt.convertTo('image/x-eps', ps.getData())
+        png = pt.convertTo('image/png', epsi.getData())
         data.setData(png)
         return data
 

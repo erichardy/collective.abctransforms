@@ -21,6 +21,8 @@ abctransforms.append('aiff_to_mp3')
 abctransforms.append('abc_to_mp3')
 abctransforms.append('abc_to_ps')
 abctransforms.append('ps_to_pdf')
+abctransforms.append('ps_to_epsi')
+abctransforms.append('epsi_to_png')
 abctransforms.append('abc_to_pdf')
 abctransforms.append('abc_to_png')
 

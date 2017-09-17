@@ -10,6 +10,9 @@ from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
+from plone import api
+from collective.abctransforms.utils import from_to
+from collective.abctransforms.interfaces import IABCTransformsSettings
 
 logger = logging.getLogger('collective.abctransforms')
 
@@ -31,6 +34,17 @@ class aiff_to_mp3(popentransform):
     useStdin = False
 
     def convert(self, orig, data, **kwargs):
+        s_cmd = api.portal.get_registry_record(
+            'abc_to_svg',
+            interface=IABCTransformsSettings)
+        cmd = eval(s_cmd)
+        mp3 = from_to(
+            orig,
+            cmd,
+            )
+        data.setData(mp3)
+        return data
+        """
         origtemp = tf.NamedTemporaryFile(mode='w+b',
                                          delete=False).name
         forigtemp = open(origtemp, 'wb')
@@ -60,6 +74,7 @@ class aiff_to_mp3(popentransform):
         os.unlink(desttemp)
         data.setData(destdata)
         return data
+        """
 
 
 def register():

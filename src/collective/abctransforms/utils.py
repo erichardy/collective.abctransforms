@@ -40,7 +40,7 @@ def add_abc_MIMEType():
 def from_to(src,
             command,
             toappend=None,
-            logging=False,
+            logs=False,
             inputsuffix=None,
             outputsuffix=None,
             delsrc=True,
@@ -69,6 +69,7 @@ def from_to(src,
         outputsuffix = ''
     to = ''
     if outputsuffix == 'svg':
+        # special SVG : abcm2ps allways adds 001.svg to output filename !!!
         to = 'svg'
         outputsuffix = ''
     srcfile = tf.NamedTemporaryFile(mode='w+b',
@@ -84,7 +85,7 @@ def from_to(src,
                                      delete=False).name
     command[command.index("datain")] = srcfile
     command[command.index("dataout")] = destfile
-    if logging:
+    if logs:
         logger.info('srcfile : ' + srcfile)
         logger.info('destfile : ' + destfile)
         logger.info('command : ' + str(command))
@@ -97,7 +98,7 @@ def from_to(src,
     destdata = fddest.read()
     fddest.close()
     output, errors = p.communicate()
-    if logging:
+    if logs:
         logger.info(errors)
         logger.info(output)
     if delsrc:
