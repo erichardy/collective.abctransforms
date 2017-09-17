@@ -29,6 +29,7 @@ class abc_to_png(popentransform):
         pt = getToolByName(portal, 'portal_transforms')
         ps = pt.convertTo('application/postscript', abc)
         epsi = pt.convertTo('image/x-eps', ps.getData())
+        # import pdb;pdb.set_trace()
         png = pt.convertTo('image/png', epsi.getData())
         data.setData(png)
         return data

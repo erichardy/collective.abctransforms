@@ -101,8 +101,8 @@ class IABCTransformsSettings(model.Schema):
                    label=_(u'debug options'),
                    fields=['debug_mode',
                            'show_command',
-                           'delete_src',
-                           'delete_dst',
+                           'keep_src',
+                           'keep_dst',
                            ])
     debug_mode = Bool(
         title=_(u'debug mode ?'),
@@ -112,11 +112,11 @@ class IABCTransformsSettings(model.Schema):
         title=_(u'show command line in logs ?'),
         description=_(u'uncheck for normal use'),
         default=True)
-    delete_src = Bool(
-        title=_(u'remove source temp file ?'),
+    keep_src = Bool(
+        title=_(u'don\'t remove source temp file ?'),
         description=_(u'uncheck for normal use'),
         default=True)
-    delete_dst = Bool(
-        title=_(u'remove dest temp file ?'),
+    keep_dst = Bool(
+        title=_(u'don\'t remove dest temp file ?'),
         description=_(u'uncheck for normal use'),
         default=True)

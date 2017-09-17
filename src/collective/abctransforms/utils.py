@@ -4,6 +4,8 @@ import logging
 import os
 import tempfile as tf
 import subprocess as sp
+from plone import api
+from collective.abctransforms.interfaces import IABCTransformsSettings
 
 logger = logging.getLogger('collective.abctransforms')
 
@@ -40,11 +42,8 @@ def add_abc_MIMEType():
 def from_to(src,
             command,
             toappend=None,
-            logs=False,
             inputsuffix=None,
-            outputsuffix=None,
-            delsrc=True,
-            deldst=True):
+            outputsuffix=None):
     """
     This function convert input data given in the src param according
     to the command.
@@ -59,10 +58,11 @@ def from_to(src,
     :type command: list of strings, first element is a binary to call,
     :param toappend: bytes to append to src data
     :type toappend: bytes
-    :param logging: output logs if True
-    :type logging: boolean
     :returns: data converted by `command` from `src`
     """
+    debug_mode = api.portal.get_registry_record(
+        'debug_mode',
+        interface=IABCTransformsSettings)
     if not inputsuffix:
         inputsuffix = ''
     if not outputsuffix:
@@ -85,24 +85,38 @@ def from_to(src,
                                      delete=False).name
     command[command.index("datain")] = srcfile
     command[command.index("dataout")] = destfile
-    if logs:
+    if to == 'svg':
+        # special SVG : abcm2ps allways adds 001.svg to output filename !!!
+        destfile = destfile + '001.svg'
+    if debug_mode:
         logger.info('srcfile : ' + srcfile)
         logger.info('destfile : ' + destfile)
-        logger.info('command : ' + str(command))
+        show_command = api.portal.get_registry_record(
+            'show_command',
+            interface=IABCTransformsSettings)
+        if show_command:
+            logger.info('command : ' + str(command))
+        keep_src = api.portal.get_registry_record(
+            'keep_src',
+            interface=IABCTransformsSettings)
+        keep_dst = api.portal.get_registry_record(
+            'keep_dst',
+            interface=IABCTransformsSettings)
     p = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE)
     p.wait()
 
-    if to == 'svg':
-        destfile = destfile + '001.svg'
     fddest = open(destfile, "rb")
     destdata = fddest.read()
     fddest.close()
     output, errors = p.communicate()
-    if logs:
+    if debug_mode:
         logger.info(errors)
         logger.info(output)
-    if delsrc:
+        if not keep_src:
+            os.unlink(srcfile)
+        if not keep_dst:
+            os.unlink(destfile)
+    else:
         os.unlink(srcfile)
-    if deldst:
         os.unlink(destfile)
     return destdata
