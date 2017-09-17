@@ -3,9 +3,6 @@
 Uses the abc2midi
 """
 import logging
-import os
-import tempfile as tf
-import subprocess as sp
 from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
