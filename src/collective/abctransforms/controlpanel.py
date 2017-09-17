@@ -2,14 +2,14 @@
 
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
-from plonetheme.iuem20 import _
-from plonetheme.iuem20.interfaces import IPlonethemeIuem20Settings
+from collective.abctransforms import _
+from collective.abctransforms.interfaces import IABCTransformsSettings
 
 
 class IABCTransformsSettingsForm(RegistryEditForm):
-    schema = IPlonethemeIuem20Settings
-    label = _(u'plonetheme.iuem20 Settings')
-    description = _(u'plonetheme.iuem20 Settings Description')
+    schema = IABCTransformsSettings
+    label = _(u'ABC transforms Settings')
+    description = _(u'ABC transforms Settings Description')
 
     """
     def updateFields(self):

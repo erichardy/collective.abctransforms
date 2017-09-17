@@ -49,7 +49,7 @@
   <browser:page
        name="abctransforms-settings"
        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-       class=".controlpanel.IABCTransformsSettings"
+       class=".controlpanel.IABCTransformsControlPanel"
        permission="cmf.ManagePortal"
     />
 
