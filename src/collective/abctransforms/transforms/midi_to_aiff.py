@@ -10,6 +10,9 @@ from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
+from plone import api
+from collective.abctransforms.utils import from_to
+from collective.abctransforms.interfaces import IABCTransformsSettings
 
 logger = logging.getLogger('collective.abctransforms')
 
@@ -27,6 +30,19 @@ class midi_to_aiff(popentransform):
     useStdin = False
 
     def convert(self, orig, data, **kwargs):
+        s_cmd = api.portal.get_registry_record(
+            'midi_to_aiff',
+            interface=IABCTransformsSettings)
+        cmd = eval(s_cmd)
+        aiff = from_to(
+            orig,
+            cmd,
+            inputsuffix='.mid',
+            outputsuffix='.aiff'
+            )
+        data.setData(aiff)
+        return data
+        """
         mididata = orig
         miditemp = tf.NamedTemporaryFile(mode='w+b',
                                          suffix='.mid', delete=False).name
@@ -57,6 +73,7 @@ class midi_to_aiff(popentransform):
         os.unlink(miditemp)
         data.setData(aiffdata)
         return data
+        """
 
 
 def register():

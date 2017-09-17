@@ -44,7 +44,7 @@ class IABCTransformsSettings(model.Schema):
     abc_to_midi = TextLine(
         title=_(u'abc To midi command'),
         description=_(u'python list of strings, with "datain" and "dataout"'),
-        default=u'["abcm2ps", "datain", "-O", "dataout"]',
+        default=u'["abc2midi", "datain", "-o", "dataout"]',
         required=True
         )
 
@@ -93,7 +93,7 @@ class IABCTransformsSettings(model.Schema):
     abc_to_svg = TextLine(
         title=_(u'ABC to SVG command'),
         description=_(u'used for ABC to SVG'),
-        default=u'["abcm2ps", "datain", "-g", -O", "dataout"]',
+        default=u'["abcm2ps", "datain", "-g", "-O", "dataout"]',
         required=True,
         )
 

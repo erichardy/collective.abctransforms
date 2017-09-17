@@ -32,7 +32,7 @@ class aiff_to_mp3(popentransform):
 
     def convert(self, orig, data, **kwargs):
         s_cmd = api.portal.get_registry_record(
-            'abc_to_svg',
+            'aiff_to_mp3',
             interface=IABCTransformsSettings)
         cmd = eval(s_cmd)
         mp3 = from_to(
