@@ -17,6 +17,8 @@ abctransforms = []
 abctransforms.append('abc_to_midi')
 abctransforms.append('abc_to_svg')
 abctransforms.append('midi_to_aiff')
+abctransforms.append('midi_to_ogg')
+abctransforms.append('abc_to_ogg')
 abctransforms.append('aiff_to_mp3')
 abctransforms.append('abc_to_mp3')
 abctransforms.append('abc_to_ps')
