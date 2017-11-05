@@ -19,7 +19,7 @@ class midi_to_ogg(popentransform):
 
     __name__ = "midi_to_ogg"
     inputs = ('audio/midi',)
-    output = 'audio/x-ogg'
+    output = 'audio/ogg'
 
     __version__ = '2015-10-31.01'
 

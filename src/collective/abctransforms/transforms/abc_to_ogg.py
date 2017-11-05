@@ -18,7 +18,7 @@ class abc_to_ogg(popentransform):
 
     __name__ = "abc_to_ogg"
     inputs = ('text/vnd.abc',)
-    output = 'audio/x-ogg'
+    output = 'audio/ogg'
 
     __version__ = '2015-10-31.01'
 
@@ -27,7 +27,7 @@ class abc_to_ogg(popentransform):
         portal = api.portal.get()
         pt = getToolByName(portal, 'portal_transforms')
         midi = pt.convertTo('audio/midi', abc)
-        ogg = pt.convertTo('audio/x-ogg', midi.getData())
+        ogg = pt.convertTo('audio/ogg', midi.getData())
         data.setData(ogg.getData())
         return data
 
