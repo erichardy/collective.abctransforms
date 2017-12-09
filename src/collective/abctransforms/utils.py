@@ -7,8 +7,6 @@ import subprocess as sp
 from plone import api
 from zope.annotation.interfaces import IAnnotations
 from collective.abctransforms.interfaces import IABCTransformsSettings
-from collective.abctransforms.adapters.abc_to_midi_output \
-    import abcToMidiOutput
 
 logger = logging.getLogger('collective.abctransforms')
 
