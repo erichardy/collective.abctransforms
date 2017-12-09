@@ -37,6 +37,7 @@ class abc_to_midi(popentransform):
         see the test abc_to_midi
         """
         context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         s_cmd = api.portal.get_registry_record(
             'abc_to_midi',
             interface=IABCTransformsSettings)
@@ -45,7 +46,8 @@ class abc_to_midi(popentransform):
             orig,
             cmd,
             outputsuffix='.mid',
-            context=context
+            context=context,
+            annotate=annotate,
             )
         data.setData(midi)
         return data

@@ -5,38 +5,57 @@ import os
 import tempfile as tf
 import subprocess as sp
 from plone import api
+from zope.annotation.interfaces import IAnnotations
 from collective.abctransforms.interfaces import IABCTransformsSettings
+from collective.abctransforms.adapters.abc_to_midi_output \
+    import abcToMidiOutput
 
 logger = logging.getLogger('collective.abctransforms')
 
 
-def add_abc_MIMEType():
-    # manage_addMimeType
-    '''
-    mr = api.portal.get_tool(name='mimetypes_registry')
-    mr.manage_addMimeType(
-        'text_abc',
-        mimetypes=['text/vnd.abc'],
-        extensions=['abc'],
-        binary=False,
-        icon_path='txt.png',
-        globs=['*.abc'])
-    Il faut aussi trouver comment ajouter le 'magic' :
-    from Products.MimetypesRegistry.mime_types.magic import magicNumbers
-    from Products.MimetypesRegistry.mime_types.magic import magicTest
-    m = [0, 'string', '=', '%abc', 'text/vnd.abc']
-    magicNumbers.append(magicTest(m[0], m[1], m[2], m[3], m[4]))
-    mat = magicTest(m[0], m[1], m[2], m[3], m[4])
-    (Pdb) mat.msg
-    'text/vnd.abc'
-    (Pdb) mat.op
-    '='
-    (Pdb) mat.value
-    '%abc'
-    (Pdb) mat.type
-    'string'
-    '''
-    pass
+def manageOutputs(new_val=None, key=None, annotation=None):
+    """
+    on peut éventuellement gérer plus finement l'output des commandes
+    mais pour l'instant, on se content de mettre dans l'annotation
+    la dernière valeur de l'output sans chercher à conserver un quelconque
+    historique...
+    la valeur ``max_output_size`` ne sert donc pas ici.
+    """
+    # val = annotation.get(key)
+    if new_val is not None:
+        annotation[key] = new_val
+    """
+    if new_val is not None:
+        logger.info(key)
+        logger.info(new_val)
+        if val is None:
+            annotation[key] = val
+        else:
+            maxsize = api.portal.get_registry_record(
+                'max_output_size',
+                interface=IABCTransformsSettings)
+            if len(val) > maxsize:
+                annotation[key] = val[len(val) - maxsize:]
+            annotation[key] += u'\n--\n' + new_val
+    """
+
+
+def saveOutputAndErrors(context, command, output, errors):
+    annot = IAnnotations(context)
+    try:
+        cmd = command[0]
+    except Exception:
+        cmd = u'COMMAND?'
+    K_OUTPUT = cmd + u'_OUTPUT'
+    manageOutputs(
+        new_val=output,
+        key=K_OUTPUT,
+        annotation=annot)
+    K_ERRORS = cmd + u'_ERRORS'
+    manageOutputs(
+        new_val=errors,
+        key=K_ERRORS,
+        annotation=annot)
 
 
 def from_to(src,
@@ -44,7 +63,8 @@ def from_to(src,
             toappend=None,
             inputsuffix=None,
             outputsuffix=None,
-            context=None):
+            context=None,
+            annotate=False):
     """
     This function convert input data given in the src param according
     to the command.
@@ -115,12 +135,18 @@ def from_to(src,
         logger.info('PAS de Context...')
         logger.info(command)
     output, errors = p.communicate()
+    """
     logger.info('OUTPUT')
     logger.info(output)
     logger.info('END OUTPUT')
     logger.info('ERRORS')
     logger.info(errors)
     logger.info('END ERRORS')
+    """
+    logger.info('ANNOTATE')
+    logger.info(annotate)
+    if annotate:
+        saveOutputAndErrors(context, command, output, errors)
     if debug_mode:
         logger.info(errors)
         logger.info(output)

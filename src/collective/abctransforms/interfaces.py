@@ -5,6 +5,7 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from plone.supermodel import model
 from zope.schema import TextLine
 from zope.schema import Bool
+from zope.schema import Int
 from collective.abctransforms import _
 
 
@@ -120,3 +121,15 @@ class IABCTransformsSettings(model.Schema):
         title=_(u'don\'t remove dest temp file ?'),
         description=_(u'uncheck for normal use'),
         default=True)
+
+    model.fieldset('misc',
+                   label=_(u'misc options'),
+                   fields=['max_output_size',
+                           ]
+                   )
+    max_output_size = Int(
+        title=_(u'max size of output and errors'),
+        description=_(u'in order to keep raisonable sizes'),
+        min=0,
+        max=100000,
+        default=1000)
