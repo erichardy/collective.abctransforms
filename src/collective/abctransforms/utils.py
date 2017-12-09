@@ -43,7 +43,8 @@ def from_to(src,
             command,
             toappend=None,
             inputsuffix=None,
-            outputsuffix=None):
+            outputsuffix=None,
+            context=None):
     """
     This function convert input data given in the src param according
     to the command.
@@ -108,7 +109,18 @@ def from_to(src,
     fddest = open(destfile, "rb")
     destdata = fddest.read()
     fddest.close()
+    if context:
+        logger.info(context)
+    else:
+        logger.info('PAS de Context...')
+        logger.info(command)
     output, errors = p.communicate()
+    logger.info('OUTPUT')
+    logger.info(output)
+    logger.info('END OUTPUT')
+    logger.info('ERRORS')
+    logger.info(errors)
+    logger.info('END ERRORS')
     if debug_mode:
         logger.info(errors)
         logger.info(output)
