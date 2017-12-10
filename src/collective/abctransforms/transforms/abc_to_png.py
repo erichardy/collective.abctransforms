@@ -25,11 +25,21 @@ class abc_to_png(popentransform):
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
+        context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         abc = orig
         portal = api.portal.get()
         pt = getToolByName(portal, 'portal_transforms')
-        ps = pt.convertTo('application/postscript', abc)
-        epsi = pt.convertTo('image/x-eps', ps.getData())
+        ps = pt.convertTo(
+            'application/postscript',
+            abc,
+            context=context,
+            annotate=annotate)
+        epsi = pt.convertTo(
+            'image/x-eps',
+            ps.getData(),
+            context=context,
+            annotate=annotate)
         # the convert from epsi to png does't work
         # png = pt.convertTo('image/png', epsi.getData())
         s_cmd = api.portal.get_registry_record(
@@ -40,7 +50,9 @@ class abc_to_png(popentransform):
             epsi.getData(),
             cmd,
             inputsuffix=".epsi",
-            outputsuffix='.png'
+            outputsuffix='.png',
+            context=context,
+            annotate=annotate
             )
         data.setData(png)
         return data

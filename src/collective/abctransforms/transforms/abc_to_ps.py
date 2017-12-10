@@ -24,12 +24,19 @@ class abc_to_ps(popentransform):
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
+        context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         s_cmd = api.portal.get_registry_record(
             'abc_to_ps',
             interface=IABCTransformsSettings)
         cmd = eval(s_cmd)
         # EPS command = ["abcm2ps", "datain", '-E', '-O', "dataout"]
-        ps = from_to(orig, cmd)
+        ps = from_to(
+            orig,
+            cmd,
+            context=context,
+            annotate=annotate
+            )
         data.setData(ps)
         return data
 

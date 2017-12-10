@@ -27,6 +27,8 @@ class midi_to_ogg(popentransform):
     useStdin = False
 
     def convert(self, orig, data, **kwargs):
+        context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         s_cmd = api.portal.get_registry_record(
             'midi_to_ogg',
             interface=IABCTransformsSettings)
@@ -35,7 +37,9 @@ class midi_to_ogg(popentransform):
             orig,
             cmd,
             inputsuffix='.mid',
-            outputsuffix='.ogg'
+            outputsuffix='.ogg',
+            context=context,
+            annotate=annotate,
             )
         data.setData(ogg)
         return data

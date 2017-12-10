@@ -24,11 +24,18 @@ class ps_to_pdf(popentransform):
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
+        context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         s_cmd = api.portal.get_registry_record(
             'ps_to_pdf',
             interface=IABCTransformsSettings)
         cmd = eval(s_cmd)
-        pdf = from_to(orig, cmd)
+        pdf = from_to(
+            orig,
+            cmd,
+            context=context,
+            annotate=annotate,
+            )
         data.setData(pdf)
         return data
 

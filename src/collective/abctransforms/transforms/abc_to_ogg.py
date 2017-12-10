@@ -23,11 +23,21 @@ class abc_to_ogg(popentransform):
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
+        context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         abc = orig
         portal = api.portal.get()
         pt = getToolByName(portal, 'portal_transforms')
-        midi = pt.convertTo('audio/midi', abc)
-        ogg = pt.convertTo('audio/ogg', midi.getData())
+        midi = pt.convertTo(
+            'audio/midi',
+            abc,
+            context=context,
+            annotate=annotate)
+        ogg = pt.convertTo(
+            'audio/ogg',
+            midi.getData(),
+            context=context,
+            annotate=annotate)
         data.setData(ogg.getData())
         return data
 

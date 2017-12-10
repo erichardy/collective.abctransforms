@@ -19,10 +19,20 @@ class abc_to_pdf():
     __version__ = '2015-10-31.01'
 
     def convert(self, abc, data, **kwargs):
+        context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         portal = api.portal.get()
         pt = getToolByName(portal, "portal_transforms")
-        ps = pt.convertTo('application/postscript', abc)
-        pdf = pt.convertTo('application/pdf', ps.getData())
+        ps = pt.convertTo(
+            'application/postscript',
+            abc,
+            context=context,
+            annotate=annotate)
+        pdf = pt.convertTo(
+            'application/pdf',
+            ps.getData(),
+            context=context,
+            annotate=annotate)
         data.setData(pdf.getData())
         return data
 

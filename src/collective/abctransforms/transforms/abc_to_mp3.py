@@ -19,11 +19,25 @@ class abc_to_mp3():
     __version__ = '2015-10-31.01'
 
     def convert(self, abc, data, **kwargs):
+        context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         portal = api.portal.get()
         pt = getToolByName(portal, "portal_transforms")
-        midi = pt.convertTo('audio/midi', abc)
-        aiff = pt.convertTo('audio/x-aiff', midi.getData())
-        mp3 = pt.convertTo('audio/mpeg', aiff.getData())
+        midi = pt.convertTo(
+            'audio/midi',
+            abc,
+            context=context,
+            annotate=annotate)
+        aiff = pt.convertTo(
+            'audio/x-aiff',
+            midi.getData(),
+            context=context,
+            annotate=annotate)
+        mp3 = pt.convertTo(
+            'audio/mpeg',
+            aiff.getData(),
+            context=context,
+            annotate=annotate)
         data.setData(mp3.getData())
         return data
 

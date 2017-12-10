@@ -27,6 +27,8 @@ class midi_to_aiff(popentransform):
     useStdin = False
 
     def convert(self, orig, data, **kwargs):
+        context = kwargs.get('context')
+        annotate = kwargs.get('annotate')
         s_cmd = api.portal.get_registry_record(
             'midi_to_aiff',
             interface=IABCTransformsSettings)
@@ -35,7 +37,9 @@ class midi_to_aiff(popentransform):
             orig,
             cmd,
             inputsuffix='.mid',
-            outputsuffix='.aiff'
+            outputsuffix='.aiff',
+            context=context,
+            annotate=annotate,
             )
         data.setData(aiff)
         return data
