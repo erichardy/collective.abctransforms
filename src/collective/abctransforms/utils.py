@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from datetime import datetime
 import logging
 import os
 import tempfile as tf
@@ -40,18 +41,19 @@ def manageOutputs(new_val=None, key=None, annotation=None):
 
 def saveOutputAndErrors(context, command, output, errors):
     annot = IAnnotations(context)
+    now = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
     try:
         cmd = command[0]
     except Exception:
         cmd = u'COMMAND?'
     K_OUTPUT = cmd + u'_OUTPUT'
     manageOutputs(
-        new_val=output,
+        new_val=now + '\n' + output,
         key=K_OUTPUT,
         annotation=annot)
     K_ERRORS = cmd + u'_ERRORS'
     manageOutputs(
-        new_val=errors,
+        new_val=now + '\n' + errors,
         key=K_ERRORS,
         annotation=annot)
 
