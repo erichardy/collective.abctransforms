@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="collective.abctransforms  documentation" href="#" />
-    <link rel="next" title="Types de contenu de collective.abctransforms" href="content_types.html" /> 
+    <link rel="next" title="Dependencies" href="dependencies.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -34,7 +34,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="content_types.html" title="Types de contenu de collective.abctransforms"
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dependencies.html" title="Dependencies"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">collective.abctransforms  documentation</a> &raquo;</li> 
       </ul>
@@ -47,26 +50,39 @@
             
   <div class="section" id="documentation-de-collective-abctransforms">
 <h1>Documentation de collective.abctransforms<a class="headerlink" href="#documentation-de-collective-abctransforms" title="Permalink to this headline">¶</a></h1>
-<p>Documentation de <code class="docutils literal"><span class="pre">collective.abctransforms</span></code> développé par Eric Hardy.</p>
-<p>Voir les recommandations pour la documentation a <a class="reference external" href="http://docs.plone.org/about/documentation_styleguide_addons.html">DocPlone</a></p>
-<p>Voir aussi Sphinx : <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a></p>
+<p>Documentation of <code class="docutils literal"><span class="pre">collective.abctransforms</span></code> by <a class="reference external" href="https://github.com/erichardy">Eric Hardy</a>.</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>Ajouter <em>collective.abctransforms</em> a la liste definie par la variable <code class="docutils literal"><span class="pre">eggs</span></code> dans la
-section <code class="docutils literal"><span class="pre">[instance]</span></code> du fichier <em>buildout.cfg</em></p>
-<p>et la source dans la section <code class="docutils literal"><span class="pre">[sources]</span></code>:</p>
+<p>add <em>collective.abctransforms</em> to the <code class="docutils literal"><span class="pre">eggs</span></code> section in the <em>buildout.cfg</em> file</p>
+<p>and the source in section <code class="docutils literal"><span class="pre">[sources]</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre>collective.abctransforms = git git@github.com:erichardy/collective.abctransforms.git
 </pre></div>
 </div>
+<p>and re-run <code class="docutils literal"><span class="pre">bin/buildout</span></code>.</p>
 </div>
-<div class="section" id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">collective.abctransforms</span></code> is a set of transforms and transform chains for <a class="reference external" href="http://plone.org">Plone</a>.
+So, it is targeted to <strong>Plone Developpers</strong>, not for end users.</p>
+<p>The main starting point is the transform from a text in <a class="reference external" href="http://abcnotation.com/wiki/abc:standard:v2.0">ABC music notation</a> to
+MIDI, SVG, etc...</p>
+<p>This set of transforms has many <em>Linux/Unix</em> dependencies : see <a class="reference internal" href="dependencies.html"><em>Dependencies</em></a>.</p>
+<p>Most of the transforms can be configured in the control panel : see <a class="reference internal" href="configuration.html"><em>Configuration</em></a>.</p>
+<p>Compatibility : Plone 5 (not tested for Plone 4).</p>
+<p>This module is used in the module <a class="reference external" href="https://github.com/erichardy/collective.abctune">collective.abctune</a></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">documentation in progress !</p>
+</div>
 </div>
 <div class="section" id="toute-la-documentation">
 <h2>Toute la documentation<a class="headerlink" href="#toute-la-documentation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="content_types.html">Les types de contenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LICENSE.html">LICENSE</a></li>
 </ul>
 </div>
@@ -83,15 +99,15 @@ section <code class="docutils literal"><span class="pre">[instance]</span></code
   <ul>
 <li><a class="reference internal" href="#">Documentation de collective.abctransforms</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#intro">Intro</a></li>
 <li><a class="reference internal" href="#toute-la-documentation">Toute la documentation</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Next topic</h4>
-  <p class="topless"><a href="content_types.html"
-                        title="next chapter">Types de contenu de collective.abctransforms</a></p>
+  <p class="topless"><a href="dependencies.html"
+                        title="next chapter">Dependencies</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -123,7 +139,10 @@ section <code class="docutils literal"><span class="pre">[instance]</span></code
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="content_types.html" title="Types de contenu de collective.abctransforms"
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dependencies.html" title="Dependencies"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">collective.abctransforms  documentation</a> &raquo;</li> 
       </ul>

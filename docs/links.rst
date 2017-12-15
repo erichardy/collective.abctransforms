@@ -8,3 +8,8 @@
 .. _Plone: http://plone.org
 .. _plone.app.theming: http://docs.plone.org/external/plone.app.theming/docs/index.html
 .. _bootstrap: http://getbootstrap.com/
+
+.. _ABC music notation: http://abcnotation.com/wiki/abc:standard:v2.0
+.. _collective.abctune: https://github.com/erichardy/collective.abctune
+
+.. _Eric Hardy: https://github.com/erichardy

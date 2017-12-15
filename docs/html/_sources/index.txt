@@ -5,23 +5,36 @@
 Documentation de collective.abctransforms
 =========================================
 
-Documentation de ``collective.abctransforms`` développé par Eric Hardy.
-
-Voir les recommandations pour la documentation a `DocPlone`_
-
-Voir aussi Sphinx : `Sphinx`_
+Documentation of ``collective.abctransforms`` by `Eric Hardy`_.
 
 Installation
 ============
-Ajouter *collective.abctransforms* a la liste definie par la variable ``eggs`` dans la
-section ``[instance]`` du fichier *buildout.cfg*
+add *collective.abctransforms* to the ``eggs`` section in the *buildout.cfg* file
 
-et la source dans la section ``[sources]``::
+and the source in section ``[sources]``::
 
    collective.abctransforms = git git@github.com:erichardy/collective.abctransforms.git
 
-Motivation
-==========
+and re-run ``bin/buildout``.
+
+Intro
+=====
+
+``collective.abctransforms`` is a set of transforms and transform chains for `Plone`_.
+So, it is targeted to **Plone Developpers**, not for end users.
+
+The main starting point is the transform from a text in `ABC music notation`_ to
+MIDI, SVG, etc...
+
+This set of transforms has many *Linux/Unix* dependencies : see :doc:`dependencies`.
+
+Most of the transforms can be configured in the control panel : see :doc:`configuration`.
+
+Compatibility : Plone 5 (not tested for Plone 4).
+
+This module is used in the module `collective.abctune`_
+
+.. warning:: documentation in progress !
 
 Toute la documentation
 ======================
@@ -29,5 +42,8 @@ Toute la documentation
 .. toctree::
     :maxdepth: 2
 
-    Les types de contenu <content_types>
+    Dependencies <dependencies>
+    Configuration <configuration>
+    Usage <usage>
+    Transforms <transforms>
     LICENSE <LICENSE>
