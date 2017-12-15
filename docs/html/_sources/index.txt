@@ -47,4 +47,5 @@ Toute la documentation
     Configurations <configurations>
     Usage <usage>
     Transforms <transforms>
+    Bugs <bugs>
     LICENSE <LICENSE>
