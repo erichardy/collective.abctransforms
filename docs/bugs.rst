@@ -18,3 +18,7 @@ Tests
 
 Tests MUST be re-written !
 
+Dependencies
+============
+
+At module install, the dependencies should be checked.
