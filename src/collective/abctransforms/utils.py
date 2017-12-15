@@ -44,8 +44,8 @@ def manageOutputs(new_val=None, key=None, annotation=None):
 
 def saveOutputAndErrors(context, command, output, errors):
     """
-    Save in annotations ``command``_output and ``command``_ERRORS
-    for a given context.
+    Save in annotations **``command``_OUTPUT** and **``command``_ERRORS**
+    in a given context.
 
     ``output`` and ``errors`` come from
     the result of a ``subprocess.Popen`` method.

@@ -25,6 +25,9 @@ class abc_to_png(popentransform):
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
+        """
+        Convert ABC to PS -> EPSI -> PNG
+        """
         context = kwargs.get('context')
         annotate = kwargs.get('annotate')
         abc = orig

@@ -30,6 +30,9 @@ abctransforms.append('abc_to_png')
 
 
 class text_abc(MimeTypeItem):
+    """
+    Declare properties of ``text/vnd.abc`` Mime Type
+    """
     __name__ = "text_abc"
     mimetypes = ('text/vnd.abc',)
     extensions = ('abc',)
@@ -50,7 +53,9 @@ class HiddenProfiles(object):
 def post_install(context):
     """Post install script
     First, test if text/vnd.abc mimetype exists,
-    If not, add it to MimetypesRegistry
+    If not, add it to MimetypesRegistry.
+
+    Then, the transforms are installed.
     """
     if context.readDataFile('collectiveabctransforms_default.txt') is None:
         return

@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="collective.abctransforms  documentation" href="#" />
-    <link rel="next" title="Dependencies" href="dependencies.html" /> 
+    <link rel="next" title="Installation" href="install.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -37,7 +37,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="dependencies.html" title="Dependencies"
+          <a href="install.html" title="Installation"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">collective.abctransforms  documentation</a> &raquo;</li> 
       </ul>
@@ -67,7 +67,7 @@ So, it is targeted to <strong>Plone Developpers</strong>, not for end users.</p>
 <p>The main starting point is the transform from a text in <a class="reference external" href="http://abcnotation.com/wiki/abc:standard:v2.0">ABC music notation</a> to
 MIDI, SVG, etc...</p>
 <p>This set of transforms has many <em>Linux/Unix</em> dependencies : see <a class="reference internal" href="dependencies.html"><em>Dependencies</em></a>.</p>
-<p>Most of the transforms can be configured in the control panel : see <code class="xref doc docutils literal"><span class="pre">configuration</span></code>.</p>
+<p>Most of the transforms can be configured in the control panel : see <a class="reference internal" href="configurations.html"><em>Configurations</em></a>.</p>
 <p>Compatibility : Plone 5 (not tested for Plone 4).</p>
 <p>This module is used in the module <a class="reference external" href="https://github.com/erichardy/collective.abctune">collective.abctune</a></p>
 <div class="admonition warning">
@@ -79,6 +79,7 @@ MIDI, SVG, etc...</p>
 <h2>Toute la documentation<a class="headerlink" href="#toute-la-documentation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dependencies.html">Dependencies</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#abc2midi">abc2midi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#abcm2ps">abcm2ps</a></li>
@@ -95,12 +96,27 @@ MIDI, SVG, etc...</p>
 <li class="toctree-l2"><a class="reference internal" href="configurations.html#max-output-size">max_output_size</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#main-usage">Main usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#annotations">Annotations</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="transforms.html#intro">Intro</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transforms.html#module-collective.abctransforms.utils">Methods used by transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transforms.html#abc-to-midi">abc_to_midi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transforms.html#abc-to-mp3">abc_to_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#abc-to-ogg">abc_to_ogg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#abc-to-pdf">abc_to_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#abc-to-png">abc_to_png</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#abc-to-ps">abc_to_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#abc-to-svg">abc_to_svg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#aiff-to-mp3">aiff_to_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#epsi-to-png">epsi_to_png</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#midi-to-aiff">midi_to_aiff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#midi-to-ogg">midi_to_ogg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#ps-to-epsi">ps_to_epsi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#ps-to-pdf">ps_to_pdf</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="LICENSE.html">LICENSE</a></li>
@@ -126,8 +142,8 @@ MIDI, SVG, etc...</p>
 </ul>
 
   <h4>Next topic</h4>
-  <p class="topless"><a href="dependencies.html"
-                        title="next chapter">Dependencies</a></p>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">Installation</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -162,7 +178,7 @@ MIDI, SVG, etc...</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="dependencies.html" title="Dependencies"
+          <a href="install.html" title="Installation"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">collective.abctransforms  documentation</a> &raquo;</li> 
       </ul>

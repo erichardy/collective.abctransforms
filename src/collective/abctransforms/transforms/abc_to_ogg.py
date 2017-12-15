@@ -23,6 +23,9 @@ class abc_to_ogg(popentransform):
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
+        """
+        Convert ABC to MIDI, then OGG
+        """
         context = kwargs.get('context')
         annotate = kwargs.get('annotate')
         abc = orig

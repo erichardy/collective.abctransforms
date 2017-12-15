@@ -5,6 +5,8 @@
 .. _Sphinx-config: http://www.sphinx-doc.org/en/1.4.8/config.html
 .. _RST: http://docutils.sourceforge.net/docs/user/rst/quickref.html
 
+.. _Installing add-on packages using buildout: https://docs.plone.org/manage/installing/installing_addons.html
+
 .. _Plone: http://plone.org
 .. _plone.app.theming: http://docs.plone.org/external/plone.app.theming/docs/index.html
 .. _bootstrap: http://getbootstrap.com/

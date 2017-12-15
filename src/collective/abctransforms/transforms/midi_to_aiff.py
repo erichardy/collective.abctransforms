@@ -27,6 +27,9 @@ class midi_to_aiff(popentransform):
     useStdin = False
 
     def convert(self, orig, data, **kwargs):
+        """
+        Convert MIDI to AIFF
+        """
         context = kwargs.get('context')
         annotate = kwargs.get('annotate')
         s_cmd = api.portal.get_registry_record(

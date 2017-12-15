@@ -19,6 +19,9 @@ class abc_to_mp3():
     __version__ = '2015-10-31.01'
 
     def convert(self, abc, data, **kwargs):
+        """
+        Convert ABC to MIDI, then AIFF, then MP3
+        """
         context = kwargs.get('context')
         annotate = kwargs.get('annotate')
         portal = api.portal.get()

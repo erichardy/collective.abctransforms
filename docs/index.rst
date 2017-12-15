@@ -28,7 +28,7 @@ MIDI, SVG, etc...
 
 This set of transforms has many *Linux/Unix* dependencies : see :doc:`dependencies`.
 
-Most of the transforms can be configured in the control panel : see :doc:`configuration`.
+Most of the transforms can be configured in the control panel : see :doc:`configurations`.
 
 Compatibility : Plone 5 (not tested for Plone 4).
 
@@ -42,6 +42,7 @@ Toute la documentation
 .. toctree::
     :maxdepth: 2
 
+    Installation <install>
     Dependencies <dependencies>
     Configurations <configurations>
     Usage <usage>

@@ -28,13 +28,8 @@ class abc_to_midi(popentransform):
     useStdin = False
 
     def convert(self, orig, data, **kwargs):
-        """"
-        Don't use this method directly !
-        Instead, use :
-        midi = portalTransformTool.convertTo('audio/x-midi',
-                                             abc)
-        and midi.getMetadata(), midi.getData()
-        see the test abc_to_midi
+        """
+        Transforms ABC text to MIDI data
         """
         context = kwargs.get('context')
         annotate = kwargs.get('annotate')

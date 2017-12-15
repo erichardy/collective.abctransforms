@@ -31,6 +31,9 @@ class aiff_to_mp3(popentransform):
     useStdin = False
 
     def convert(self, orig, data, **kwargs):
+        """
+        Convert AIFF to MP3
+        """
         context = kwargs.get('context')
         annotate = kwargs.get('annotate')
         s_cmd = api.portal.get_registry_record(

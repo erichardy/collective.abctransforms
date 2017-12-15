@@ -24,6 +24,9 @@ class abc_to_svg(popentransform):
     __version__ = '2015-10-31.01'
 
     def convert(self, orig, data, **kwargs):
+        """
+        Convert ABC to SVG
+        """
         context = kwargs.get('context')
         annotate = kwargs.get('annotate')
         s_cmd = api.portal.get_registry_record(
