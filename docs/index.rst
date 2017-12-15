@@ -43,7 +43,7 @@ Toute la documentation
     :maxdepth: 2
 
     Dependencies <dependencies>
-    Configuration <configuration>
+    Configurations <configurations>
     Usage <usage>
     Transforms <transforms>
     LICENSE <LICENSE>

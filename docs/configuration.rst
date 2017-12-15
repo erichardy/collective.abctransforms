@@ -1,7 +1,0 @@
-
-.. include:: links.rst
-
-
-=============
-Configuration
-=============

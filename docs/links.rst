@@ -13,3 +13,5 @@
 .. _collective.abctune: https://github.com/erichardy/collective.abctune
 
 .. _Eric Hardy: https://github.com/erichardy
+
+.. _Jean-François Moine: http://moinejf.free.fr/

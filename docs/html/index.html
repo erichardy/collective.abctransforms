@@ -67,7 +67,7 @@ So, it is targeted to <strong>Plone Developpers</strong>, not for end users.</p>
 <p>The main starting point is the transform from a text in <a class="reference external" href="http://abcnotation.com/wiki/abc:standard:v2.0">ABC music notation</a> to
 MIDI, SVG, etc...</p>
 <p>This set of transforms has many <em>Linux/Unix</em> dependencies : see <a class="reference internal" href="dependencies.html"><em>Dependencies</em></a>.</p>
-<p>Most of the transforms can be configured in the control panel : see <a class="reference internal" href="configuration.html"><em>Configuration</em></a>.</p>
+<p>Most of the transforms can be configured in the control panel : see <code class="xref doc docutils literal"><span class="pre">configuration</span></code>.</p>
 <p>Compatibility : Plone 5 (not tested for Plone 4).</p>
 <p>This module is used in the module <a class="reference external" href="https://github.com/erichardy/collective.abctune">collective.abctune</a></p>
 <div class="admonition warning">
@@ -79,8 +79,22 @@ MIDI, SVG, etc...</p>
 <h2>Toute la documentation<a class="headerlink" href="#toute-la-documentation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">Dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">Dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#abc2midi">abc2midi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#abcm2ps">abcm2ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#timidity">timidity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#lame">lame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#ps2epsi">ps2epsi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#ps2pdf">ps2pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#convert">convert</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configurations.html#external-commands-configurations">External commands configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configurations.html#debug-configuration">Debug configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configurations.html#max-output-size">max_output_size</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="transforms.html#intro">Intro</a></li>
