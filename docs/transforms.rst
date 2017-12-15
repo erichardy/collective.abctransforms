@@ -4,9 +4,25 @@
 Transforms
 ==========
 
-Need to add params doc strings to from_to method !
+Intro
+=====
+
+All the transform classes implement ``Products.PortalTransforms.interfaces.ITransform``
+interface. So, they have a ``convert`` method wich takes the source data to convert.
+
+See :doc:`usage` for more information...
+
+
+Methods used by transforms
+==========================
 
 .. automodule:: collective.abctransforms.utils
-   :members: from_to
+   :members: manageOutputs, saveOutputAndErrors, from_to
    :undoc-members:
 
+abc_to_midi
+===========
+
+
+abc_to_mp3
+==========
