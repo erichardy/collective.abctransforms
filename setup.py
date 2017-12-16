@@ -34,7 +34,7 @@ setup(
     ],
     keywords='Python Plone',
     author='Eric Hardy',
-    author_email='Eric.Hardy@univ-brest.fr',
+    author_email='',
     url='https://pypi.python.org/pypi/collective.abctransforms',
     license='GPL version 2',
     packages=find_packages('src', exclude=['ez_setup']),

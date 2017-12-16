@@ -28,7 +28,7 @@ class TestAbcToMidi(unittest.TestCase):
         got = from_to(abc,
                       command,
                       toappend='\n\n',
-                      logging=False)
+                      )
         self.assertEqual(got, midi)
 
     def test_fromMIDI_toAIFF(self):
@@ -47,7 +47,7 @@ class TestAbcToMidi(unittest.TestCase):
                     '-Oa']
         got = from_to(midi,
                       timidity,
-                      logging=False)
+                      )
         self.assertEqual(got, aiff)
 
     def test_fromAIFF_toMP3(self):
@@ -66,5 +66,5 @@ class TestAbcToMidi(unittest.TestCase):
                 "dataout"]
         got = from_to(aiff,
                       lame,
-                      logging=False)
+                      )
         self.assertEqual(got, mp3)

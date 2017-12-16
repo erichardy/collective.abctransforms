@@ -6,8 +6,12 @@ from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
+import logging
 
 import collective.abctransforms
+
+
+logger = logging.getLogger('collective.abctransforms:tests')
 
 
 class CollectiveAbctransformsLayer(PloneSandboxLayer):
@@ -16,9 +20,11 @@ class CollectiveAbctransformsLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         self.loadZCML(package=collective.abctransforms)
+        # print 'setUpZope'
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'collective.abctransforms:default')
+        # print 'setUpPloneSite'
 
 
 COLLECTIVE_ABCTRANSFORMS_FIXTURE = CollectiveAbctransformsLayer()
