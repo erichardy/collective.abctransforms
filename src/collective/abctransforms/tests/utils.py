@@ -86,3 +86,51 @@ def deleteSoundFiles():
     f6 = input_file_path('ogg.ogg')
     cmd = 'rm ' + f1 + f2 + f3 + f4 + f5 + f6
     system(cmd)
+
+
+def createScoreFiles():
+    # abc_to_midi
+    datain = input_file_path('DonaldBlue.abc')
+    dataout = input_file_path('DonaldBlue.ps')
+    lcmd = eval(registryRecords['abc_to_ps'])
+    lcmd[lcmd.index('datain')] = datain
+    lcmd[lcmd.index('dataout')] = dataout
+    cmd = ' '.join(lcmd)
+    system(cmd)
+    # ps_to_epsi
+    datain = input_file_path('DonaldBlue.ps')
+    dataout = input_file_path('DonaldBlue.epsi')
+    lcmd = eval(registryRecords['ps_to_epsi'])
+    lcmd[lcmd.index('datain')] = datain
+    lcmd[lcmd.index('dataout')] = dataout
+    cmd = ' '.join(lcmd)
+    system(cmd)
+    # epsi_to_png
+    datain = input_file_path('DonaldBlue.epsi')
+    dataout = input_file_path('DonaldBlue.png')
+    lcmd = eval(registryRecords['epsi_to_png'])
+    lcmd[lcmd.index('datain')] = datain
+    lcmd[lcmd.index('dataout')] = dataout
+    cmd = ' '.join(lcmd)
+    system(cmd)
+    # ps_to_pdf
+    datain = input_file_path('DonaldBlue.ps')
+    dataout = input_file_path('DonaldBlue.pdf')
+    lcmd = eval(registryRecords['ps_to_pdf'])
+    lcmd[lcmd.index('datain')] = datain
+    lcmd[lcmd.index('dataout')] = dataout
+    cmd = ' '.join(lcmd)
+    system(cmd)
+
+
+def deleteScoreFiles():
+    f1 = input_file_path('DonaldBlue.ps') + ' '
+    f2 = input_file_path('ps.ps') + ' '
+    f3 = input_file_path('DonaldBlue.png') + ' '
+    f4 = input_file_path('DonaldBlue.mp3') + ' '
+    f5 = input_file_path('aiff.aiff') + ' '
+    f6 = input_file_path('ogg.ogg')
+    cmd = 'rm -f ' + f1 + f2 + f3 + f4 + f5 + f6
+    system(cmd)
+
+
