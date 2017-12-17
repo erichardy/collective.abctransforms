@@ -52,6 +52,8 @@ abc_to_pdf
 abc_to_png
 ==========
 
+Doesn't work !
+
 .. autoclass:: collective.abctransforms.transforms.abc_to_png.abc_to_png
    :members: convert
    :undoc-members:
@@ -79,6 +81,8 @@ aiff_to_mp3
 
 epsi_to_png
 ===========
+
+Doesn't work !
 
 .. autoclass:: collective.abctransforms.transforms.epsi_to_png.epsi_to_png
    :members: convert

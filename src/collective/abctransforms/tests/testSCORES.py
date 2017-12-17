@@ -4,6 +4,7 @@ import logging
 from Products.CMFCore.utils import getToolByName
 from collective.abctransforms.testing import COLLECTIVE_ABCTRANSFORMS_INTEGRATION_TESTING  # noqa
 from utils import input_file_path, createScoreFiles, deleteScoreFiles
+from utils import createFile, fileType
 from utils import registryRecords
 from plone import api
 from collective.abctransforms.interfaces import IABCTransformsSettings
@@ -29,7 +30,7 @@ class TestSCORES(unittest.TestCase):
 
     def tearDown(self):
         # suppression des fichiers son
-        # deleteScoreFiles()
+        deleteScoreFiles()
         system('ls -l ' + input_file_path('.'))
 
     def test_abc_to_ps(self):
@@ -51,19 +52,11 @@ class TestSCORES(unittest.TestCase):
         #
         self.assertGreater(convertedData.getData(), 0)
         #
-        fout = open(input_file_path('ps.ps'), 'w')
-        fout.write(convertedData.getData())
-        fout.close()
-        cmd = ['file', input_file_path('ps.ps')]
-        p = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
-        p.wait()
-        c_output, c_errors = p.communicate()
-        cmd = ['file', input_file_path('DonaldBlue.ps')]
-        p = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
-        p.wait()
-        o_output, o_errors = p.communicate()
+        psps = createFile(convertedData.getData(), 'ps.ps')
+        out_type = fileType(psps)
+        ps_type = fileType('DonaldBlue.ps')
         #
-        self.assertEqual(c_output.split(':')[1], o_output.split(':')[1])
+        self.assertEqual(ps_type, out_type)
 
     def test_ps_to_epsi(self):
         f = open(input_file_path('DonaldBlue.ps'), 'r')
@@ -76,62 +69,45 @@ class TestSCORES(unittest.TestCase):
         #
         self.assertGreater(convertedData.getData(), 0)
         #
-        fout = open(input_file_path('epsi.epsi'), 'w')
-        fout.write(convertedData.getData())
-        fout.close()
-        cmd = ['file', input_file_path('epsi.epsi')]
-        p = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
-        p.wait()
-        c_output, c_errors = p.communicate()
-        cmd = ['file', input_file_path('DonaldBlue.epsi')]
-        p = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
-        p.wait()
-        o_output, o_errors = p.communicate()
+        epsiepsi = createFile(convertedData.getData(), 'epsi.epsi')
+        out_type = fileType(epsiepsi)
+        epsi_type = fileType('DonaldBlue.epsi')
         #
-        self.assertEqual(c_output.split(':')[1], o_output.split(':')[1])
+        self.assertEqual(epsi_type, out_type)
 
     """
     def test_epsi_to_png(self):
         f = open(input_file_path('DonaldBlue.epsi'), 'r')
         datain = f.read()
         f.close()
-        f = open(input_file_path('DonaldBlue.png'), 'r')
-        dataout = f.read()
-        f.close()
         convertedData = self.pt.convertTo(
             'image/png',
             datain,
             )
         #
-        self.assertEqual(dataout, convertedData.getData())
+        self.assertGreater(convertedData.getData(), 0)
         #
-        fout = open(input_file_path('png.png'), 'w')
-        fout.write(convertedData.getData())
-        fout.close()
-        cmd = ['file', input_file_path('png.png')]
-        p = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
-        p.wait()
-        c_output, c_errors = p.communicate()
-        cmd = ['file', input_file_path('DonaldBlue.png')]
-        p = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
-        p.wait()
-        o_output, o_errors = p.communicate()
+        epsiepsi = createFile(convertedData.getData(), 'png.png')
+        out_type = fileType(epsiepsi)
+        png_type = fileType('DonaldBlue.png')
         #
-        self.assertEqual(c_output.split(':')[1], o_output.split(':')[1])
+        self.assertEqual(png_type, out_type)
     """
 
     def test_ps_to_pdf(self):
         f = open(input_file_path('DonaldBlue.ps'), 'r')
         datain = f.read()
         f.close()
-        f = open(input_file_path('DonaldBlue.pdf'), 'r')
-        dataout = f.read()
-        f.close()
         convertedData = self.pt.convertTo(
             'application/pdf',
             datain,
             )
         #
-        self.assertEqual(dataout, convertedData.getData())
+        self.assertGreater(convertedData.getData(), 0)
         #
+        pdfpdf = createFile(convertedData.getData(), 'pdf.pdf')
+        out_type = fileType(pdfpdf)
+        pdf_type = fileType('DonaldBlue.pdf')
+        #
+        self.assertEqual(pdf_type, out_type)
 

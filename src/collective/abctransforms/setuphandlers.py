@@ -24,7 +24,9 @@ abctransforms.append('abc_to_mp3')
 abctransforms.append('abc_to_ps')
 abctransforms.append('ps_to_pdf')
 abctransforms.append('ps_to_epsi')
-abctransforms.append('epsi_to_png')
+# conflict with image_to_png yet available
+# So, we don't install it
+# abctransforms.append('epsi_to_png')
 abctransforms.append('abc_to_pdf')
 abctransforms.append('abc_to_png')
 

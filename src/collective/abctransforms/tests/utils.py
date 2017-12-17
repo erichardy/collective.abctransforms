@@ -42,6 +42,27 @@ registryRecords = {
     }
 
 
+def createFile(data, name):
+    try:
+        fout = open(input_file_path(name), 'w')
+        fout.write(data)
+        fout.close()
+        return name
+    except Exception:
+        raise IOError
+
+
+def fileType(name):
+    try:
+        cmd = ['file', input_file_path(name)]
+        p = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
+        p.wait()
+        o_output, o_errors = p.communicate()
+        return ' '.join(o_output.split(':')[1:]).strip()
+    except Exception:
+        return False
+
+
 def createSoundFiles():
     # abc_to_midi
     datain = input_file_path('DonaldBlue.abc')
@@ -127,10 +148,12 @@ def deleteScoreFiles():
     f1 = input_file_path('DonaldBlue.ps') + ' '
     f2 = input_file_path('ps.ps') + ' '
     f3 = input_file_path('DonaldBlue.png') + ' '
-    f4 = input_file_path('DonaldBlue.mp3') + ' '
-    f5 = input_file_path('aiff.aiff') + ' '
-    f6 = input_file_path('ogg.ogg')
-    cmd = 'rm -f ' + f1 + f2 + f3 + f4 + f5 + f6
+    f4 = input_file_path('DonaldBlue.ps') + ' '
+    f5 = input_file_path('DonaldBlue.epsi') + ' '
+    f6 = input_file_path('DonaldBlue.pdf') + ' '
+    f7 = input_file_path('pdf.pdf') + ' '
+    f8 = input_file_path('pdf.pdf') + ' '
+    cmd = 'rm -f ' + f1 + f2 + f3 + f4 + f5 + f6 + f7 + f8
     system(cmd)
 
 
