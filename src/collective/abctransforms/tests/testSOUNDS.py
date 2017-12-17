@@ -45,6 +45,36 @@ class TestSOUNDS(unittest.TestCase):
             )
         self.assertEqual(dataout, convertedData.getData())
 
+    def test_abc_to_mp3(self):
+        f = open(input_file_path('DonaldBlue.abc'), 'r')
+        datain = f.read()
+        f.close()
+        f = open(input_file_path('DonaldBlue.mp3'), 'r')
+        dataout = f.read()
+        f.close()
+        convertedData = self.pt.convertTo(
+            'audio/mpeg',
+            datain,
+            )
+        self.assertEqual(
+            convertedData.getMetadata()['mimetype'],
+            'audio/mpeg')
+
+    def test_abc_to_ogg(self):
+        f = open(input_file_path('DonaldBlue.abc'), 'r')
+        datain = f.read()
+        f.close()
+        f = open(input_file_path('DonaldBlue.mp3'), 'r')
+        dataout = f.read()
+        f.close()
+        convertedData = self.pt.convertTo(
+            'audio/ogg',
+            datain,
+            )
+        self.assertEqual(
+            convertedData.getMetadata()['mimetype'],
+            'audio/ogg')
+
     def test_midi_to_aiff(self):
         # because it seems not possible to compare the two files,
         # we compare theire size and theire type

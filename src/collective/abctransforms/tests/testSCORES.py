@@ -43,8 +43,6 @@ class TestSCORES(unittest.TestCase):
         f = open(input_file_path('DonaldBlue.abc'), 'r')
         datain = f.read()
         f.close()
-        f = open(input_file_path('DonaldBlue.ps'), 'r')
-        f.close()
         convertedData = self.pt.convertTo(
             'application/postscript',
             datain,
@@ -57,6 +55,51 @@ class TestSCORES(unittest.TestCase):
         ps_type = fileType('DonaldBlue.ps')
         #
         self.assertEqual(ps_type, out_type)
+
+    def test_abc_to_pdf(self):
+        f = open(input_file_path('DonaldBlue.abc'), 'r')
+        datain = f.read()
+        f.close()
+        convertedData = self.pt.convertTo(
+            'application/pdf',
+            datain,
+            )
+        #
+        self.assertGreater(convertedData.getData(), 0)
+        #
+        self.assertEqual(
+            convertedData.getMetadata()['mimetype'],
+            'application/pdf')
+
+    def test_abc_to_svg(self):
+        f = open(input_file_path('DonaldBlue.abc'), 'r')
+        datain = f.read()
+        f.close()
+        convertedData = self.pt.convertTo(
+            'image/svg+xml',
+            datain,
+            )
+        #
+        self.assertGreater(convertedData.getData(), 0)
+        #
+        self.assertEqual(
+            convertedData.getMetadata()['mimetype'],
+            'image/svg+xml')
+
+    def test_abc_to_png(self):
+        f = open(input_file_path('DonaldBlue.abc'), 'r')
+        datain = f.read()
+        f.close()
+        convertedData = self.pt.convertTo(
+            'image/png',
+            datain,
+            )
+        #
+        self.assertGreater(convertedData.getData(), 0)
+        #
+        self.assertEqual(
+            convertedData.getMetadata()['mimetype'],
+            'image/png')
 
     def test_ps_to_epsi(self):
         f = open(input_file_path('DonaldBlue.ps'), 'r')

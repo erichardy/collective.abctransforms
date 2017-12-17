@@ -7,6 +7,8 @@ from Products.CMFCore.utils import getToolByName
 from plone import api
 from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
+from collective.abctransforms.interfaces import IABCTransformsSettings
+from collective.abctransforms.utils import from_to
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
 # from collective.abctransforms.interfaces import IABCTransformsSettings
@@ -40,22 +42,37 @@ class abc_to_png(popentransform):
             'application/postscript',
             abc,
             context=context,
-            annotate=annotate)
+            annotate=annotate
+            )
         epsi = pt.convertTo(
             'image/x-eps',
             ps.getData(),
             context=context,
-            annotate=annotate)
+            annotate=annotate
+            )
+        s_cmd = api.portal.get_registry_record(
+            'epsi_to_png',
+            interface=IABCTransformsSettings
+            )
+        cmd = eval(s_cmd)
+        png = from_to(
+             epsi.getData(),
+             cmd,
+             inputsuffix=".epsi",
+             outputsuffix='.png',
+             context=context,
+             annotate=annotate
+             )
 
         """
         We call the yet available transform image/* to image/png
         but seems not working with epsi !
-        """
         png = pt.convertTo(
             target_mimetype='image/png',
             orig=epsi.getData(),
             context=context,
             annotate=annotate)
+        """
         data.setData(png)
         return data
 

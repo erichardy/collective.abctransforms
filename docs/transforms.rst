@@ -52,7 +52,7 @@ abc_to_pdf
 abc_to_png
 ==========
 
-Doesn't work !
+OK with local epsi to png converter.
 
 .. autoclass:: collective.abctransforms.transforms.abc_to_png.abc_to_png
    :members: convert
@@ -76,15 +76,6 @@ aiff_to_mp3
 ===========
 
 .. autoclass:: collective.abctransforms.transforms.aiff_to_mp3.aiff_to_mp3
-   :members: convert
-   :undoc-members:
-
-epsi_to_png
-===========
-
-Doesn't work !
-
-.. autoclass:: collective.abctransforms.transforms.epsi_to_png.epsi_to_png
    :members: convert
    :undoc-members:
 
