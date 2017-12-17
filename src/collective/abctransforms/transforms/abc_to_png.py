@@ -9,8 +9,8 @@ from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
-from collective.abctransforms.interfaces import IABCTransformsSettings
-from collective.abctransforms.utils import from_to
+# from collective.abctransforms.interfaces import IABCTransformsSettings
+# from collective.abctransforms.utils import from_to
 
 logger = logging.getLogger('collective.abctransforms')
 
