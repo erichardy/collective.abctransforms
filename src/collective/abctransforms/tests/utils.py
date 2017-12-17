@@ -152,7 +152,7 @@ def deleteScoreFiles():
     f5 = input_file_path('DonaldBlue.epsi') + ' '
     f6 = input_file_path('DonaldBlue.pdf') + ' '
     f7 = input_file_path('pdf.pdf') + ' '
-    f8 = input_file_path('pdf.pdf') + ' '
+    f8 = input_file_path('epsi.epsi') + ' '
     cmd = 'rm -f ' + f1 + f2 + f3 + f4 + f5 + f6 + f7 + f8
     system(cmd)
 

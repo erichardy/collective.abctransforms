@@ -29,3 +29,5 @@ var
 src/collective/abctransforms/tests/outputs/DonaldBlue*
 src/collective/abctransforms/tests/outputs/got*
 docs/html/
+.coverage
+htmlcov
