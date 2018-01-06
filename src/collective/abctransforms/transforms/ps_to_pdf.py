@@ -3,7 +3,7 @@
 Uses the ps2pdf
 """
 import logging
-from zope.interface import implements
+from zope.interface import implementer
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
@@ -14,8 +14,8 @@ from collective.abctransforms.interfaces import IABCTransformsSettings
 logger = logging.getLogger('collective.abctransforms')
 
 
+@implementer(ITransform)
 class ps_to_pdf(popentransform):
-    implements(ITransform)
 
     __name__ = "ps_to_pdf"
     inputs = ('application/postscript',)

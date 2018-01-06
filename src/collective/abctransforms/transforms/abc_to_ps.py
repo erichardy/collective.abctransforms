@@ -3,7 +3,7 @@
 Uses abcm2ps
 """
 import logging
-from zope.interface import implements
+from zope.interface import implementer
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
@@ -14,8 +14,8 @@ from collective.abctransforms.interfaces import IABCTransformsSettings
 logger = logging.getLogger('collective.abctransforms')
 
 
+@implementer(ITransform)
 class abc_to_ps(popentransform):
-    implements(ITransform)
 
     __name__ = "abc_to_ps"
     inputs = ('text/vnd.abc',)

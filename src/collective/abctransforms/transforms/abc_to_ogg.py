@@ -4,7 +4,7 @@ Uses abcm2ps
 """
 import logging
 from Products.CMFCore.utils import getToolByName
-from zope.interface import implements
+from zope.interface import implementer
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
@@ -13,8 +13,8 @@ from plone import api
 logger = logging.getLogger('collective.abctransforms')
 
 
+@implementer(ITransform)
 class abc_to_ogg(popentransform):
-    implements(ITransform)
 
     __name__ = "abc_to_ogg"
     inputs = ('text/vnd.abc',)
