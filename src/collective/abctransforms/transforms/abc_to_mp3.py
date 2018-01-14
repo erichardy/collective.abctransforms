@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from zope.interface import implements
+from zope.interface import implementer
 from Products.PortalTransforms.interfaces import ITransform
 from Products.CMFCore.utils import getToolByName
 from plone import api
@@ -9,8 +9,8 @@ from plone import api
 logger = logging.getLogger('collective.abctransforms')
 
 
+@implementer(ITransform)
 class abc_to_mp3():
-    implements(ITransform)
 
     __name__ = "abc_to_mp3"
     inputs = ('text/vnd.abc',)
