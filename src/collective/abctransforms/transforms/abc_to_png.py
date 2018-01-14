@@ -5,7 +5,7 @@ Uses the convert from ImageMagick package
 import logging
 from Products.CMFCore.utils import getToolByName
 from plone import api
-from zope.interface import implementer
+from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from collective.abctransforms.interfaces import IABCTransformsSettings
 from collective.abctransforms.utils import from_to
@@ -17,8 +17,8 @@ from Products.PortalTransforms.libtransforms.commandtransform import (
 logger = logging.getLogger('collective.abctransforms')
 
 
-@implementer(ITransform)
 class abc_to_png(popentransform):
+    implements(ITransform)
 
     __name__ = "abc_to_png"
     inputs = ('text/vnd.abc',)

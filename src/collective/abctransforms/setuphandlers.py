@@ -9,7 +9,6 @@ from StringIO import StringIO
 from Products.MimetypesRegistry.MimeTypeItem import MimeTypeItem
 from Products.MimetypesRegistry.mime_types.magic import magicNumbers
 from Products.MimetypesRegistry.mime_types.magic import magicTest
-from Products.PortalTransforms.setuphandlers import correctMapping
 
 logger = logging.getLogger('collective.abctransforms:GS')
 
@@ -85,8 +84,6 @@ def post_install(context):
 def install_transforms(portal, out):
     for abctransform in abctransforms:
         install_transform(portal, out, abctransform)
-    site = api.portal.get()
-    correctMapping(out, site)
 
 
 # code from Products/CMFBibliographyAT/setuphandlers.py
@@ -98,12 +95,11 @@ def install_transform(portal, out, abctransform):
         try:
             pt.manage_delObjects([abctransform])
         except Exception:
-            logger.info(abctransform + ' not installed')
+            logger.info(abctransform + ' not yet installed')
             # XXX: get rid of bare except
 
         pt.manage_addTransform(abctransform,
                                module + abctransform)
-        logger.info(abctransform + ': now installed')
         # see Products/CMFBibliographyAT/setuphandlers.py
         # addPolicy(transform_tool, out)
     except (NameError, AttributeError):
@@ -126,4 +122,3 @@ def uninstall(context):
 
     for abctransform in abctransforms:
         pt.unregisterTransform(abctransform)
-        logger.info('!! ' + abctransform + ' uninstalled')

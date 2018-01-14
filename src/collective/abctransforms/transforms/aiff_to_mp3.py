@@ -3,7 +3,7 @@
 Uses lame
 """
 import logging
-from zope.interface import implementer
+from zope.interface import implements
 from Products.PortalTransforms.interfaces import ITransform
 from Products.PortalTransforms.libtransforms.commandtransform import (
     popentransform)
@@ -14,8 +14,8 @@ from collective.abctransforms.interfaces import IABCTransformsSettings
 logger = logging.getLogger('collective.abctransforms')
 
 
-@implementer(ITransform)
 class aiff_to_mp3(popentransform):
+    implements(ITransform)
 
     __name__ = "aiff_to_mp3"
     inputs = ('audio/x-aiff',)
