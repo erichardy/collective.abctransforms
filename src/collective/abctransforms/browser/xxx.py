@@ -9,6 +9,7 @@ from plone import api
 logger = logging.getLogger('collective.abctransforms')
 
 abc = """
+%abc
 X:1
 %%MIDI chordvol 30
 %%MIDI bassvol 30
@@ -30,5 +31,5 @@ class xxx(BrowserView):
     def __call__(self):
         portal = api.portal.get()
         pt = getToolByName(portal, "portal_transforms")
-        midi = pt.convertTo(target_mimetype='audio/midi', orig=abc)
-        logger.info(midi.getMetadata())
+        svg = pt.convertTo('image/svg+xml', abc)
+        logger.info(svg.getMetadata())
