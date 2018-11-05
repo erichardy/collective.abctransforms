@@ -145,6 +145,7 @@ def from_to(src,
     command[command.index("dataout")] = destfile
     if to == 'svg':
         # special SVG : abcm2ps allways adds 001.svg to output filename !!!
+        xdestfile = destfile
         destfile = destfile + '001.svg'
     if debug_mode:
         logger.info('srcfile : ' + srcfile)
@@ -176,6 +177,8 @@ def from_to(src,
         if not keep_src:
             os.unlink(srcfile)
         if not keep_dst:
+            if to == 'svg':
+                os.unlink(xdestfile)
             os.unlink(destfile)
     else:
         os.unlink(srcfile)
